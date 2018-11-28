@@ -4,7 +4,6 @@
 #include "Vector2.h"
 #include "Vector3.h"
 #include "Colors.h"
-#include "Timer.h"
 #include "DrawFunctions.h"
 
 #include <GL/glew.h>
@@ -28,8 +27,7 @@ namespace jm
 
 		GLFWwindow* glfw_window = nullptr;
 
-		Timer timer;
-
+		// spf는 매 프레임마다 이전 프레임과의 시간간격으로 업데이트 되도록 함.
 		float spf = 1.0f / 60.0f;		 // second(s) per frame
 
 		// control options

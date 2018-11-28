@@ -13,19 +13,7 @@ namespace jm
 		CollisionManager(const CollisionManager& other)
 		{ }
 
-		bool circleToCircle(const vec2& pos1, const float& rad1, const vec2& pos2, const float& rad2)
-		{
-			vec2 diff = pos2 - pos1;
-			float powedDistance = diff.x*diff.x + diff.y*diff.y;
-			if (powedDistance <= powf(rad1 + rad2, 2))
-			{
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-		}
+		bool circleToCircle(const vec2& pos1, const float& rad1, const vec2& pos2, const float& rad2);
 
 	public:
 		static CollisionManager* getInstance()

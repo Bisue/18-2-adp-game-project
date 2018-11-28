@@ -18,5 +18,7 @@ namespace jm
 		const RGB white(255, 255, 255);
 		const RGB gold(255, 223, 0);
 		const RGB silver(192, 192, 192);
+		const RGB pink(255, 192, 203);
+		const RGB hotpink(255, 105, 180);
 	}
 }

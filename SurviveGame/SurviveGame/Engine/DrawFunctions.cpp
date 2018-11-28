@@ -8,7 +8,7 @@ namespace jm
 	{
 		return degree / 180.0f * 3.141592f;
 	}
-	float getDegree(const float& radian)
+	float getDegree(const float& radian) // radian to degree
 	{
 		return radian * 180.0f / 3.141592f;
 	}

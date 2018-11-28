@@ -1,18 +1,22 @@
 #pragma once
+#include "DrawFunctions.h"
 #include <random>
 
 namespace jm
 {
+	//TODO: think if Singleton Pattern is required
 	class Randomization
 	{
 	private:
 		static Randomization* instance;
-		std::mt19937 mer;
+		static std::mt19937 mer;
 
 		Randomization()
-		{ }
+		{
+		}
 		Randomization(const Randomization& other)
-		{ }
+		{
+		}
 
 	public:
 		static Randomization* getInstance()
@@ -20,22 +24,14 @@ namespace jm
 			if (instance == nullptr)
 			{
 				instance = new Randomization();
+				std::random_device rd;
+				instance->mer = std::mt19937(rd());
 			}
 			return instance;
 		}
-		float randomFloat(float s, float e)
-		{
-			std::random_device rd;
-			mer = std::mt19937(rd());
-			std::uniform_real_distribution<float> dist(s, e);
-			return dist(mer);
-		}
-		int randomInt(int s, int e)
-		{
-			std::random_device rd;
-			mer = std::mt19937(rd());
-			std::uniform_int_distribution<int> dist(s, e);
-			return dist(mer);
-		}
+
+		float randomFloat(float min, float max);
+		int randomInt(int min, int max);
+		vec2 randomDirVector(); // 랜덤방향벡터를 반환 (주의: 각 방향벡터가 나올 확률이 일정하지 않음..(사각형으로 좌표를 찍어서))
 	};
 }

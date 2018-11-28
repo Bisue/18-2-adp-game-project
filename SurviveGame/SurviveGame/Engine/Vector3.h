@@ -8,7 +8,8 @@ namespace jm
 	class Vector3
 	{
 	public:
-		union {
+		union
+		{
 			struct { T x, y, z; };
 			struct { T v0, v1, v2; };
 			struct { T r, g, b; };
@@ -18,14 +19,17 @@ namespace jm
 
 	public:
 		Vector3()
-		{}
+		{
+		}
 
 		Vector3(const T & _x, const T & _y, const T & _z)
 			: x(_x), y(_y), z(_z)
-		{}
+		{
+		}
 
 		~Vector3()
-		{}
+		{
+		}
 
 		void operator += (const Vector3<T>& v)
 		{

@@ -251,25 +251,10 @@ namespace jm
 			//glfwSetInputMode(glfw_window, GLFW_STICKY_KEYS, GLFW_FALSE); // not working 
 			glfwPollEvents();
 
-			//추가한부분
 			//spf업데이트
 			float curFrameTime = float(glfwGetTime());
 			spf = curFrameTime - preFrameTime;
 			preFrameTime = curFrameTime;
-
-			//const double dt = timer.stopAndGetElapsedMilli();
-
-			//Debugging
-			//std::cout << dt << std::endl;
-
-			//if (dt < spf) // to prevent too high fps
-			//{
-			//	const auto time_to_sleep = static_cast<int>((spf - dt) * 1000.0f);
-			//	std::this_thread::sleep_for(std::chrono::milliseconds(time_to_sleep));
-			//	
-			//	//Debugging
-			//	//std::cout << "sleep " << time_to_sleep << std::endl;
-			//}
 		}
 
 		glfwTerminate();

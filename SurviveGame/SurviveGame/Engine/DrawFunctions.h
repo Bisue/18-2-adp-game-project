@@ -10,6 +10,7 @@ namespace jm
 	using vec2 = Vector2<float>;
 	using vec3 = Vector3<float>;
 
+	// rad to deg, deg to rad
 	float getRadian(const float& degree);
 	float getDegree(const float& radian);
 

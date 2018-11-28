@@ -318,7 +318,7 @@ namespace jm
 		}
 		void debug()
 		{
-			std::cout << "itemcnt = " <<items.size()<< std::endl;
+			std::cout << "randDir = " <<RD::getInstance()->randomDirVector()<< std::endl;
 		}
 	};
 }

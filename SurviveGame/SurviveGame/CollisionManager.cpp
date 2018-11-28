@@ -2,6 +2,21 @@
 
 namespace jm
 {
+	bool CollisionManager::circleToCircle(const vec2& pos1, const float& rad1, const vec2& pos2, const float& rad2)
+	{
+		vec2 diff = pos2 - pos1;
+		float powedDistance = diff.x*diff.x + diff.y*diff.y;
+		if (powedDistance <= powf(rad1 + rad2, 2))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+
 	bool CollisionManager::checkCircleCollision(const vec2& pos1, const float& rad1, const vec2& pos2, const float& rad2)
 	{
 		return circleToCircle(pos1, rad1, pos2, rad2);

@@ -9,7 +9,8 @@ namespace jm
 	class Vector2
 	{
 	public:
-		union {
+		union
+		{
 			struct { T x, y; };
 			struct { T v0, v1; };
 			T data[2];
@@ -22,10 +23,29 @@ namespace jm
 
 		Vector2(const T& x_input, const T& y_input)
 			: x(x_input), y(y_input)
-		{}
+		{
+		}
 
 		~Vector2()
 		{
+		}
+
+		T getDotProduct(const Vector2<T>& v) const
+		{
+			return x * v.x + y * v.y;
+		}
+
+		T getMagnitude()
+		{
+			return std::sqrt(x * x + y * y);
+		}
+
+		//방향이 같고 크기가 1인 벡터 반환
+		Vector2<T> nomalized()
+		{
+			Vector2<T> temp = *this;
+			temp /= temp.getMagnitude();
+			return temp;
 		}
 
 		void operator += (const Vector2<T>& v)
@@ -67,7 +87,7 @@ namespace jm
 		{
 			return Vector2<T>(x * a, y * a);
 		}
-			   
+
 		Vector2<T> operator / (const T& a) const
 		{
 			const T one_over_a = T(1) / a;

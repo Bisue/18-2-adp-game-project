@@ -17,7 +17,7 @@ namespace jm
 			timer.start();
 		}
 		//getter, setter
-		float getDelay()
+		float getDelay() const
 		{
 			return delay;
 		}
