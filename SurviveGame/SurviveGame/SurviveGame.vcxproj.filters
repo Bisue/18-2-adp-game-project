@@ -55,6 +55,9 @@
     <Filter Include="소스 파일\Codes\GameVars">
       <UniqueIdentifier>{871993c2-78fb-4db8-bcbb-99f97e5a3d60}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Codes\ETCGraphics">
+      <UniqueIdentifier>{b8bd87c4-b429-4240-bf3c-6bc32f06b630}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bullet.h">
@@ -119,6 +122,9 @@
     </ClInclude>
     <ClInclude Include="GameTime.h">
       <Filter>소스 파일\Codes\GameVars</Filter>
+    </ClInclude>
+    <ClInclude Include="CrossHair.h">
+      <Filter>소스 파일\Codes\ETCGraphics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

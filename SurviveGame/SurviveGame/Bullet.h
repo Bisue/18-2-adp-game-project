@@ -15,7 +15,7 @@ namespace jm
 		Bullet(const vec2& position, const int& power = 1, const vec2& dir = vec2(0.0f, 0.0f), const float speed = 5.0f)
 			: GameObject(position, 0.01f), dir(dir), speed(speed)
 		{
-			damage = power * 15.0f;
+			damage = power * 40.0f;
 		}
 		float getDamage()
 		{

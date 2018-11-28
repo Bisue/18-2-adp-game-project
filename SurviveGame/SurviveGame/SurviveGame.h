@@ -11,16 +11,17 @@
 #include "Delay.h"
 #include "SoundManager.h"
 #include "GameTime.h"
+#include "CrossHair.h"
 
 namespace jm
 {
 	class SurviveGame : public Game2D
 	{
 		using CM = CollisionManager;
-		using RD = Randomization;
 		using SM = SoundManager;
 	private:
 		vec2 playerSpawnPoint = vec2(0.0f, 0.0f);
+		CrossHair crossHair;
 		Player* player = nullptr;
 		std::vector<Bullet*> playerBullets;
 		std::vector<Zombie*> zombies;
@@ -42,9 +43,15 @@ namespace jm
 		SurviveGame()
 			: Game2D("Survive Game", 960, 960, false)
 		{
-			SM::getInstance()->initSound("hit.wav", "zombieHit", false);
-			SM::getInstance()->initSound("boom.wav", "zombieDie", false);
+			SM::getInstance()->initSound("horror_bgm.wav", "bgm", true);
+			SM::getInstance()->initSound("single_shot.wav", "playerShoot", false);
+			SM::getInstance()->initSound("zombie_hit.wav", "zombieHit", false);
+			SM::getInstance()->initSound("zombie_die.wav", "zombieDie", false);
 			SM::getInstance()->initSound("shine.wav", "itemGen", false);
+			SM::getInstance()->initSound("gameover_scream.mp3", "gameover", false);
+
+			//BGM
+			SM::getInstance()->playSound("bgm");
 
 			player = new Player(playerSpawnPoint, 1.0f);
 		}
@@ -83,6 +90,7 @@ namespace jm
 			{
 				if (CM::getInstance()->checkCircleCollision(player, zombies[i]))
 				{
+					SM::getInstance()->playSound("gameover");
 					gameover = true;
 				}
 			}
@@ -105,7 +113,7 @@ namespace jm
 		{
 			switch (kill)
 			{
-			case 1:
+			case 20:
 				if (!isItemGiven[0])
 				{
 					items.push_back(new Item(vec2(RD::getInstance()->randomFloat(-screenBorder, screenBorder), RD::getInstance()->randomFloat(-screenBorder, screenBorder))));
@@ -191,8 +199,7 @@ namespace jm
 			{
 				dir.y = -1.0f;
 			}
-
-			player->move(dir);
+			player->move(dir.nomalized());
 
 			//getMousePos
 			vec2 mousePos = getCursorPos();
@@ -203,6 +210,8 @@ namespace jm
 			{
 				player->shoot(playerBullets, mousePos);
 			}
+			//crossHair 업데이트
+			crossHair.updateMousePos(mousePos);
 		}
 		void spawnZombie()
 		{
@@ -257,7 +266,7 @@ namespace jm
 				{
 					if(CM::getInstance()->checkCircleCollision(zombies[i], playerBullets[j]))
 					{
-						SM::getInstance()->playSound("zombieHit");
+						SM::getInstance()->stopAndPlaySound("zombieHit");
 
 						float damage = playerBullets[j]->getDamage();
 						delete playerBullets[j];
@@ -266,7 +275,7 @@ namespace jm
 						zombies[i]->hit(damage);
 						if (zombies[i]->checkDie())
 						{
-							SM::getInstance()->playSound("zombieDie");
+							SM::getInstance()->stopAndPlaySound("zombieDie");
 
 							delete zombies[i];
 							zombies[i] = nullptr;
@@ -305,13 +314,7 @@ namespace jm
 			{
 				zombies[i]->render();
 			}
-			
-			//crosshair
-			beginTransformation();
-			translate(getCursorPos());
-			drawFilledCircle(Colors::green, 0.01f);
-			drawWiredCircle(Colors::green, 0.04f);
-			endTransformation();
+			crossHair.render();
 		}
 		void debug()
 		{

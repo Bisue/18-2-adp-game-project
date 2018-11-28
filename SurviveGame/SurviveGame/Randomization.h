@@ -34,4 +34,5 @@ namespace jm
 		int randomInt(int min, int max);
 		vec2 randomDirVector(); // 랜덤방향벡터를 반환 (주의: 각 방향벡터가 나올 확률이 일정하지 않음..(사각형으로 좌표를 찍어서))
 	};
+	using RD = Randomization;
 }

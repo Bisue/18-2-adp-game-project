@@ -11,7 +11,7 @@ namespace jm
 	{
 		using SM = SoundManager;
 	private:
-		Delay fireDelay = Delay(0.06f);
+		Delay fireDelay = Delay(0.2f);
 
 		float speed;
 		int powerLevel = 1;
@@ -20,9 +20,7 @@ namespace jm
 		//constructor
 		Player(const vec2& position, const float& speed)
 			: GameObject(position, 0.05f), speed(speed)
-		{
-			SM::getInstance()->initSound("shoot.wav", "playerShoot", false);
-		}
+		{ }
 		//getter, setter
 		float getSpeed()
 		{
@@ -57,7 +55,7 @@ namespace jm
 		void lookAt(vec2 mousePos)
 		{
 			vec2 diff = mousePos - position;
-			float rad = atan2(diff.y, diff.x);
+			float rad = diff.getRad();
 			rotation = getDegree(rad);
 		}
 		void render() const override

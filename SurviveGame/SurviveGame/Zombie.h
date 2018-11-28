@@ -10,7 +10,7 @@ namespace jm
 
 	public:
 		Zombie(const vec2 position)
-			: Monster(position, 0.4f, 0.05f, 200.0f, Delay(0.8f))
+			: Monster(position, 0.4f, 0.05f, 100.0f, Delay(0.8f))
 		{
 
 		}
@@ -19,10 +19,18 @@ namespace jm
 		{
 			beginTransformation();
 			{
-				translate(position);
+				drawFilledCircle(Colors::deepdartgreen, bodyRadius);
+				translate(bodyRadius*0.35f, 0);
 				beginTransformation();
 				{
-					drawFilledCircle(Colors::gray, bodyRadius);
+					translate(0, bodyRadius);
+					drawFilledCircle(Colors::darkgreen, bodyRadius*0.35f);
+				}
+				endTransformation();
+				beginTransformation();
+				{
+					translate(0, -bodyRadius);
+					drawFilledCircle(Colors::darkgreen, bodyRadius*0.35f);
 				}
 				endTransformation();
 			}
