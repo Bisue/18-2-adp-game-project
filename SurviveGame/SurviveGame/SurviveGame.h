@@ -12,6 +12,7 @@
 #include "SoundManager.h"
 #include "GameTime.h"
 #include "CrossHair.h"
+#include "ScoreManager.h"
 
 namespace jm
 {
@@ -28,8 +29,6 @@ namespace jm
 		std::vector<Item*> items;
 
 		float screenBorder = 1.0f;
-
-		int score = 0;
 
 		int kill = 0;
 		bool isItemGiven[4] = { false,false,false,false };
@@ -90,6 +89,10 @@ namespace jm
 			{
 				if (CM::getInstance()->checkCircleCollision(player, zombies[i]))
 				{
+					SM::getInstance()->stopSound("playerShoot");
+					SM::getInstance()->stopSound("zombieHit");
+					SM::getInstance()->stopSound("zombieDie");
+					SM::getInstance()->stopSound("bgm");
 					SM::getInstance()->playSound("gameover");
 					gameover = true;
 				}
@@ -97,7 +100,7 @@ namespace jm
 		}
 		void updateScore()
 		{
-			score = (kill * 15 + int(RUNTIME) * 5);
+			ScoreManager::getInstance()->setScore(kill*5+int(RUNTIME));
 		}
 		void spawnSpeedUp()
 		{

@@ -42,7 +42,7 @@ namespace jm
 			{
 				SM::getInstance()->stopAndPlaySound("playerShoot");
 
-				Bullet* bullet = new Bullet(position, powerLevel);
+				Bullet* bullet = new Bullet(position, powerLevel*40.0f, 4.0f);
 				bullet->updateVelocityTo(targetPos);
 
 				bullets.push_back(bullet);

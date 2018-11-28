@@ -18,10 +18,10 @@ namespace jm
 		float originDelay; //기본 calDirDelay 임시저장변수
 		float recogRad; //플레이어 인식거리
 
-		bool dirFlag = true;
+		int dirFlag = 1;
 
 	public:
-		Monster(const vec2& position, const float& speed, const float& bodyRadius, const float& maxHp, const Delay& calDirDelay, const float& recogRad = 0.5f)
+		Monster(const vec2& position, const float& speed, const float& bodyRadius, const float& maxHp, const Delay& calDirDelay, const float& recogRad = 0.35f)
 			: GameObject(position, bodyRadius), calDirDelay(calDirDelay), speed(speed), maxHp(maxHp), curHp(maxHp), recogRad(recogRad)
 		{
 			moveDir = vec2(0, 0);
@@ -33,21 +33,25 @@ namespace jm
 		{
 			if ((targetPos - position).getMagnitude() < recogRad)
 			{
-				calDirDelay.setDelay(0.1f);
+				calDirDelay.setDelay(0.05f);
 				updateDir(targetPos);
 			}
 			else
 			{
 				calDirDelay.setDelay(originDelay);
-				if (dirFlag)
+				if (dirFlag == 0)
 				{
+					//중심이 (0,0), 반지름이 1.0f인 원 안에서 랜덤하게 움직임.
 					updateDir(RD::getInstance()->randomDirVector());
-					dirFlag = !dirFlag;
+				}
+				else if (dirFlag == 1)
+				{
+					//...
+					updateDir(RD::getInstance()->randomDirVector());
 				}
 				else
 				{
-					updateDir(targetPos);
-					dirFlag = !dirFlag;
+					updateDir(position); //정지
 				}
 			}
 			move();
@@ -56,12 +60,14 @@ namespace jm
 		{
 			if (calDirDelay.check())
 			{
-				vec2 diff = targetPos - position;
-				diff /= sqrt(diff.x*diff.x + diff.y*diff.y);
-				moveDir = diff;
+				vec2 diff = targetPos - position;;
+				moveDir = diff.nomalized();
 
 				//rotate
 				rotation = getDegree(diff.getRad());
+
+				//flag update
+				dirFlag = Randomization::getInstance()->randomInt(0, 2);
 			}
 		}
 		void move()
@@ -87,6 +93,9 @@ namespace jm
 			{
 				translate(position);
 				rotate(rotation);
+				//==debug
+				drawWiredCircle(Colors::gray, recogRad);
+				//=======
 				drawBody();
 			}
 			endTransformation();

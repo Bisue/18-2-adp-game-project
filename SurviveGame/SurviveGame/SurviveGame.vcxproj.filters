@@ -19,9 +19,6 @@
     <Filter Include="소스 파일\Codes">
       <UniqueIdentifier>{32cd8b59-938e-41d8-b058-da79f55bfe2d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\Codes\GameObjects">
-      <UniqueIdentifier>{f32657cf-fe07-4234-bb18-43948d85eee8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\Codes\Interfaces">
       <UniqueIdentifier>{510e608a-155c-4121-b482-1d4bc9d60ce9}</UniqueIdentifier>
     </Filter>
@@ -58,19 +55,28 @@
     <Filter Include="소스 파일\Codes\ETCGraphics">
       <UniqueIdentifier>{b8bd87c4-b429-4240-bf3c-6bc32f06b630}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Codes\Managers\ScoreManager">
+      <UniqueIdentifier>{ba8bcc74-817b-4038-9738-9349d2e06c1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Codes\Objects">
+      <UniqueIdentifier>{f32657cf-fe07-4234-bb18-43948d85eee8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Codes\Objects\Guns">
+      <UniqueIdentifier>{ee4f2ecd-e47c-4dfc-9ce1-6b8a9d83d3f8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bullet.h">
-      <Filter>소스 파일\Codes\GameObjects</Filter>
+      <Filter>소스 파일\Codes\Objects</Filter>
     </ClInclude>
     <ClInclude Include="Item.h">
-      <Filter>소스 파일\Codes\GameObjects</Filter>
+      <Filter>소스 파일\Codes\Objects</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>소스 파일\Codes\GameObjects</Filter>
+      <Filter>소스 파일\Codes\Objects</Filter>
     </ClInclude>
     <ClInclude Include="Zombie.h">
-      <Filter>소스 파일\Codes\GameObjects</Filter>
+      <Filter>소스 파일\Codes\Objects</Filter>
     </ClInclude>
     <ClInclude Include="Monster.h">
       <Filter>소스 파일\Codes\Interfaces</Filter>
@@ -126,6 +132,12 @@
     <ClInclude Include="CrossHair.h">
       <Filter>소스 파일\Codes\ETCGraphics</Filter>
     </ClInclude>
+    <ClInclude Include="ScoreManager.h">
+      <Filter>소스 파일\Codes\Managers\ScoreManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Gun.h">
+      <Filter>소스 파일\Codes\Objects\Guns</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -154,6 +166,9 @@
     </ClCompile>
     <ClCompile Include="GameTIme.cpp">
       <Filter>소스 파일\Codes\GameVars</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreManager.cpp">
+      <Filter>소스 파일\Codes\Managers\ScoreManager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

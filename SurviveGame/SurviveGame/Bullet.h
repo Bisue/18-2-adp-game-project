@@ -8,15 +8,14 @@ namespace jm
 	{
 	private:
 		vec2 dir;
+		RGB color;
 		float speed;
 		float damage;
 
 	public:
-		Bullet(const vec2& position, const int& power = 1, const vec2& dir = vec2(0.0f, 0.0f), const float speed = 5.0f)
-			: GameObject(position, 0.01f), dir(dir), speed(speed)
-		{
-			damage = power * 40.0f;
-		}
+		Bullet(const vec2& position, const float& damage = 1, const float speed = 5.0f, const RGB& color = Colors::red)
+			: GameObject(position, 0.01f), damage(damage), dir(vec2(0,0)), speed(speed), color(color)
+		{ }
 		float getDamage()
 		{
 			return damage;
@@ -37,7 +36,7 @@ namespace jm
 			beginTransformation();
 			{
 				translate(position);
-				drawFilledCircle(Colors::red, bodyRadius);
+				drawFilledCircle(color, bodyRadius);
 			}
 			endTransformation();
 		}

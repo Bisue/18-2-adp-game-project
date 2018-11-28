@@ -1,6 +1,5 @@
 #include "Game2D.h"
 #include "DrawFunctions.h"
-#include "GameTime.h"
 
 #include <iostream>
 #include <iomanip>
