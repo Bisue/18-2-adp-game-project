@@ -89,7 +89,7 @@ namespace jm
 		}
 		void updateScore()
 		{
-			score = (kill * 15 + int(GameTime::getInstance()->getRunTime()) * 5);
+			score = (kill * 15 + int(RUNTIME) * 5);
 		}
 		void spawnSpeedUp()
 		{
@@ -315,7 +315,7 @@ namespace jm
 		}
 		void debug()
 		{
-			std::cout << "curTime = " <<GameTime::getInstance()->getRunTime()<<", deltaTime = " << GameTime::getInstance()->getDeltaTime()<< std::endl;
+			std::cout << "curTime = " << RUNTIME << ", deltaTime = " << DELTATIME << std::endl;
 		}
 	};
 }

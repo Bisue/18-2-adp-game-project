@@ -52,7 +52,7 @@ namespace jm
 		}
 		void move(vec2 dirVector)
 		{
-			position += dirVector* speed * GameTime::getInstance()->getDeltaTime();
+			position += dirVector* speed * DELTATIME;
 		}
 		void lookAt(vec2 mousePos)
 		{

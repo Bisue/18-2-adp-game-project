@@ -52,7 +52,7 @@
     <Filter Include="소스 파일\Codes\Managers\VectorManager">
       <UniqueIdentifier>{21140c55-c69b-46e0-86f8-58dd6d80be05}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\Codes\Utilities\GameVars">
+    <Filter Include="소스 파일\Codes\GameVars">
       <UniqueIdentifier>{871993c2-78fb-4db8-bcbb-99f97e5a3d60}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -118,7 +118,7 @@
       <Filter>소스 파일\Engine</Filter>
     </ClInclude>
     <ClInclude Include="GameTime.h">
-      <Filter>소스 파일\Codes\Utilities\GameVars</Filter>
+      <Filter>소스 파일\Codes\GameVars</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -147,7 +147,7 @@
       <Filter>소스 파일\Engine</Filter>
     </ClCompile>
     <ClCompile Include="GameTIme.cpp">
-      <Filter>소스 파일\Codes\Utilities\GameVars</Filter>
+      <Filter>소스 파일\Codes\GameVars</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

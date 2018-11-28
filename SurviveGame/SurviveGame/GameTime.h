@@ -1,6 +1,10 @@
 #pragma once
 #include <iostream>
 
+//편의용 매크로들
+#define DELTATIME (GameTime::getInstance()->getDeltaTime())
+#define RUNTIME (GameTime::getInstance()->getRunTime())
+
 namespace jm
 {
 	//singleton

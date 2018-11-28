@@ -30,7 +30,7 @@ namespace jm
 		}
 		void update()
 		{
-			position += dir * speed * GameTime::getInstance()->getDeltaTime();
+			position += dir * speed * DELTATIME;
 		}
 		void render() const override
 		{

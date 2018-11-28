@@ -40,7 +40,7 @@ namespace jm
 		void move()
 		{
 			vec2 velocity = moveDir * speed;
-			position += velocity * GameTime::getInstance()->getDeltaTime();
+			position += velocity * DELTATIME;
 		}
 
 		//hit

@@ -19,7 +19,7 @@ namespace jm
 
 		void update()
 		{
-			rotateFloat = GameTime::getInstance()->getDeltaTime();
+			rotateFloat = DELTATIME;
 		}
 
 		void render() const override
