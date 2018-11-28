@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="소스 파일\Engine">
+      <UniqueIdentifier>{f2139538-e7f4-4cc9-838a-f35cee0186d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Codes">
+      <UniqueIdentifier>{32cd8b59-938e-41d8-b058-da79f55bfe2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Codes\GameObjects">
+      <UniqueIdentifier>{f32657cf-fe07-4234-bb18-43948d85eee8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Codes\Interfaces">
+      <UniqueIdentifier>{510e608a-155c-4121-b482-1d4bc9d60ce9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Codes\MainGame">
+      <UniqueIdentifier>{ac5ab8b1-3c4a-4693-a1ae-9f6ea1c0eb45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Codes\Managers">
+      <UniqueIdentifier>{abc21c9f-f122-415b-896a-56bdf9288a0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Codes\Managers\CollisionManager">
+      <UniqueIdentifier>{73605f81-dbef-44a3-b432-2c21223ac0a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Codes\Managers\SoundManager">
+      <UniqueIdentifier>{740e82a0-f1aa-49e8-9bb7-e13c415ddbbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Codes\Utilities">
+      <UniqueIdentifier>{4ff5205c-c1a9-4af0-863f-6fc7c896dc97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Codes\Utilities\Random">
+      <UniqueIdentifier>{7452ab18-2587-4c53-ab4a-c7ae2b01c9cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Codes\Utilities\Delay">
+      <UniqueIdentifier>{987daf4f-f733-458a-8a62-6328326c695a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Codes\Utilities\EventHandler">
+      <UniqueIdentifier>{9354bd71-c3f5-4b9b-a31b-f3c54d4be6ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Codes\Managers\VectorManager">
+      <UniqueIdentifier>{21140c55-c69b-46e0-86f8-58dd6d80be05}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Bullet.h">
+      <Filter>소스 파일\Codes\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>소스 파일\Codes\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>소스 파일\Codes\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Zombie.h">
+      <Filter>소스 파일\Codes\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>소스 파일\Codes\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>소스 파일\Codes\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="SurviveGame.h">
+      <Filter>소스 파일\Codes\MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionManager.h">
+      <Filter>소스 파일\Codes\Managers\CollisionManager</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <Filter>소스 파일\Codes\Managers\SoundManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Randomization.h">
+      <Filter>소스 파일\Codes\Utilities\Random</Filter>
+    </ClInclude>
+    <ClInclude Include="Delay.h">
+      <Filter>소스 파일\Codes\Utilities\Delay</Filter>
+    </ClInclude>
+    <ClInclude Include="EventHandler.h">
+      <Filter>소스 파일\Codes\Utilities\EventHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="PtrVectorManager.h">
+      <Filter>소스 파일\Codes\Managers\VectorManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Colors.h">
+      <Filter>소스 파일\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DrawFunctions.h">
+      <Filter>소스 파일\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Game2D.h">
+      <Filter>소스 파일\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\RGB.h">
+      <Filter>소스 파일\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Timer.h">
+      <Filter>소스 파일\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Vector2.h">
+      <Filter>소스 파일\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Vector3.h">
+      <Filter>소스 파일\Engine</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>소스 파일\Codes\Managers\CollisionManager</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>소스 파일\Codes\Managers\SoundManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Randomization.cpp">
+      <Filter>소스 파일\Codes\Utilities\Random</Filter>
+    </ClCompile>
+    <ClCompile Include="PtrVectorManager.cpp">
+      <Filter>소스 파일\Codes\Managers\VectorManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DrawFunctions.cpp">
+      <Filter>소스 파일\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Game2D.cpp">
+      <Filter>소스 파일\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Timer.cpp">
+      <Filter>소스 파일\Engine</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
