@@ -19,7 +19,7 @@ namespace jm
 
 		void update()
 		{
-			rotateFloat = DELTATIME;
+			rotateFloat += DELTATIME;
 		}
 
 		void render() const override

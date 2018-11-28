@@ -72,16 +72,10 @@ namespace jm
 					drawFilledTriangle(Colors::blue, vec2(0.1f, 0.0f), vec2(-0.05f, 0.02f), vec2(-0.05f, -0.02f));
 				}
 				endTransformation();
-				// wings
+				//충돌반경(디버그용)
 				beginTransformation();
 				{
-
-				}
-				endTransformation();
-				// weapon
-				beginTransformation();
-				{
-
+					drawWiredCircle(Colors::black, bodyRadius);
 				}
 				endTransformation();
 			}

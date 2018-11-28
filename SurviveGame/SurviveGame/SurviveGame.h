@@ -63,7 +63,7 @@ namespace jm
 				render();
 				spawnSpeedUp();
 				updateScore();
-				debug();
+				//debug();
 			}
 			else
 			{

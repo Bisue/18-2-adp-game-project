@@ -7,7 +7,7 @@
 
 namespace jm
 {
-	//singleton
+	//╫л╠шео
 	class GameTime
 	{
 	private:
