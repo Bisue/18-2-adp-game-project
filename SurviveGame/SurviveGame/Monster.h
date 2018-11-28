@@ -23,10 +23,10 @@ namespace jm
 		}
 
 		//move
-		void moveTo(const vec2& targetPos, const float& timeStep)
+		void moveTo(const vec2& targetPos)
 		{
 			updateDir(targetPos);
-			move(timeStep);
+			move();
 		}
 		void updateDir(const vec2& targetPos)
 		{
@@ -37,10 +37,10 @@ namespace jm
 				moveDir = diff;
 			}
 		}
-		void move(const float& timeStep)
+		void move()
 		{
 			vec2 velocity = moveDir * speed;
-			position += velocity * timeStep;
+			position += velocity * GameTime::getInstance()->getDeltaTime();
 		}
 
 		//hit

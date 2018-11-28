@@ -10,6 +10,7 @@
 #include "CollisionManager.h"
 #include "Delay.h"
 #include "SoundManager.h"
+#include "GameTime.h"
 
 namespace jm
 {
@@ -36,7 +37,6 @@ namespace jm
 
 		Delay spawnDelay = Delay(1.5f);
 		Delay spawnSpeedUpDelay = Delay(1.0f);
-		float gameTime = 0.0f;
 
 	public:
 		SurviveGame()
@@ -63,7 +63,7 @@ namespace jm
 				render();
 				spawnSpeedUp();
 				updateScore();
-				//debug();
+				debug();
 			}
 			else
 			{
@@ -89,8 +89,7 @@ namespace jm
 		}
 		void updateScore()
 		{
-			score = (kill * 15 + int(gameTime) * 5);
-			gameTime += getTimeStep();
+			score = (kill * 15 + int(GameTime::getInstance()->getRunTime()) * 5);
 		}
 		void spawnSpeedUp()
 		{
@@ -193,7 +192,7 @@ namespace jm
 				dir.y = -1.0f;
 			}
 
-			player->move(dir, getTimeStep());
+			player->move(dir);
 
 			//getMousePos
 			vec2 mousePos = getCursorPos();
@@ -253,7 +252,7 @@ namespace jm
 		{
 			for (int i = zombies.size()-1; i >=0; i--)
 			{
-				zombies[i]->moveTo(player->getPos(), getTimeStep());
+				zombies[i]->moveTo(player->getPos());
 				for (int j = playerBullets.size()-1; j >= 0; j--)
 				{
 					if(CM::getInstance()->checkCircleCollision(zombies[i], playerBullets[j]))
@@ -282,15 +281,13 @@ namespace jm
 		}
 		void updateStuffs()
 		{
-			float timeStep = getTimeStep();
-			player->update(timeStep);
 			for (int i = 0; i < playerBullets.size(); i++)
 			{
-				playerBullets[i]->update(timeStep);
+				playerBullets[i]->update();
 			}
 			for (int i = 0; i < items.size(); i++)
 			{
-				items[i]->update(timeStep);
+				items[i]->update();
 			}
 		}
 		void render()
@@ -318,7 +315,7 @@ namespace jm
 		}
 		void debug()
 		{
-			std::cout << "randDir = " <<RD::getInstance()->randomDirVector()<< std::endl;
+			std::cout << "curTime = " <<GameTime::getInstance()->getRunTime()<<", deltaTime = " << GameTime::getInstance()->getDeltaTime()<< std::endl;
 		}
 	};
 }

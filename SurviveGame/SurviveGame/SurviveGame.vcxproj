@@ -84,7 +84,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.\fmod_lowlevel\inc;.\Engine</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\fmod_lowlevel\inc;.\Engine;.\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>.\fmod_lowlevel\lib</AdditionalLibraryDirectories>
@@ -132,6 +132,7 @@
     <ClInclude Include="Engine\Vector3.h" />
     <ClInclude Include="EventHandler.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameTime.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Player.h" />
@@ -146,6 +147,7 @@
     <ClCompile Include="Engine\DrawFunctions.cpp" />
     <ClCompile Include="Engine\Game2D.cpp" />
     <ClCompile Include="Engine\Timer.cpp" />
+    <ClCompile Include="GameTIme.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PtrVectorManager.cpp" />
     <ClCompile Include="Randomization.cpp" />

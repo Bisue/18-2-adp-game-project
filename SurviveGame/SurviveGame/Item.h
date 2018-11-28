@@ -8,7 +8,7 @@ namespace jm
 	private:
 		RGB color;
 
-		float rotateTimer = 0.0f;
+		float rotateFloat = 0.0f;
 
 	public:
 		Item(const vec2 position, const float radius = 0.1f)
@@ -17,9 +17,9 @@ namespace jm
 
 		}
 
-		void update(const float& timeStep)
+		void update()
 		{
-			rotateTimer = timeStep;
+			rotateFloat = GameTime::getInstance()->getDeltaTime();
 		}
 
 		void render() const override
@@ -27,7 +27,7 @@ namespace jm
 			beginTransformation();
 			{
 				translate(position);
-				rotate(rotateTimer*60.0f);
+				rotate(rotateFloat*60.0f);
 				drawFilledPentagon(color, bodyRadius);
 			}
 			endTransformation();

@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.h"
+#include "GameTime.h"
 
 namespace jm
 {
@@ -27,9 +28,9 @@ namespace jm
 			diff /= sqrt(diff.x*diff.x + diff.y*diff.y);
 			dir = diff;
 		}
-		void update(const float& timeStep)
+		void update()
 		{
-			position += dir * speed * timeStep;
+			position += dir * speed * GameTime::getInstance()->getDeltaTime();
 		}
 		void render() const override
 		{

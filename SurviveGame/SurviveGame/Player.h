@@ -38,9 +38,6 @@ namespace jm
 		}
 
 		//methods
-		void update(const float& timeStep)
-		{
-		}
 		void shoot(std::vector<Bullet*>& bullets, const vec2& targetPos)
 		{
 			if(fireDelay.check())
@@ -53,9 +50,9 @@ namespace jm
 				bullets.push_back(bullet);
 			}
 		}
-		void move(vec2 dirVector, float timeStep)
+		void move(vec2 dirVector)
 		{
-			position += dirVector* speed * timeStep;
+			position += dirVector* speed * GameTime::getInstance()->getDeltaTime();
 		}
 		void lookAt(vec2 mousePos)
 		{

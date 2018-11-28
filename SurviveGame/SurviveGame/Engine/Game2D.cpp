@@ -1,5 +1,6 @@
 #include "Game2D.h"
 #include "DrawFunctions.h"
+#include "GameTime.h"
 
 #include <iostream>
 #include <iomanip>
@@ -242,6 +243,13 @@ namespace jm
 
 			drawGrid();
 
+			//spf업데이트
+			float curFrameTime = float(glfwGetTime());
+			spf = curFrameTime - preFrameTime;
+			preFrameTime = curFrameTime;
+			//GameTime 업데이트
+			GameTime::getInstance()->setDeltaTime(spf);
+
 			update();	// the major worker function
 
 			glPopMatrix();
@@ -251,16 +259,12 @@ namespace jm
 			//glfwSetInputMode(glfw_window, GLFW_STICKY_KEYS, GLFW_FALSE); // not working 
 			glfwPollEvents();
 
-			//spf업데이트
-			float curFrameTime = float(glfwGetTime());
-			spf = curFrameTime - preFrameTime;
-			preFrameTime = curFrameTime;
 		}
 
 		glfwTerminate();
 	}
 	
-	float Game2D::getTimeStep()
+	float Game2D::getTimeStep() // GameTime 클래스로 인해 더이상 필요하지 않음
 	{
 		return spf;
 	}
