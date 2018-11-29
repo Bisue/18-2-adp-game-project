@@ -65,9 +65,9 @@ namespace jm
 				giveItem();
 				itemManage();
 				gameoverManage();
-				render();
 				spawnSpeedUp();
 				updateScore();
+				render();
 				//debug();
 			}
 			else

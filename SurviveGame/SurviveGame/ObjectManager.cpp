@@ -12,13 +12,17 @@ namespace jm
 {
 	ObjectManager* ObjectManager::getInstance()
 	{
-		if (instance = nullptr)
+		if (instance == nullptr)
 		{
 			instance = new ObjectManager(vec2(0, 0), 5.0f);
 		}
 		return instance;
 	}
 
+	std::shared_ptr<Player>& ObjectManager::getPlayer()
+	{
+		return player;
+	}
 	ObjectManager::ObjectManager(const vec2& playerStartPoint, const float& playerSpeed)
 	{
 		player = std::make_shared<Player>(playerStartPoint, playerSpeed);
@@ -31,10 +35,9 @@ namespace jm
 	{
 		items.push_back(std::make_shared<Item>(item));
 	}
-	template <class MobType>
-	void ObjectManager::addMonster(MobType& monster)
+	void ObjectManager::addMonster(Monster& monster)
 	{
-		monsters.push_back(std::shared_ptr<MobType>(monster));
+		monsters.push_back(std::make_shared<Monster>(monster));
 	}
 
 	void ObjectManager::update()
@@ -45,39 +48,35 @@ namespace jm
 	}
 	void ObjectManager::updateBullets()
 	{
-		for (auto iter = bullets.begin(); iter < bullets.end();)
+		for (int i = bullets.size()-1; i >= 0; i--)
 		{
-			auto bullet = *iter;
+			auto& bullet = bullets[i];
 			if (!((bullet->getPos().x >= -SCREENBORDER && bullet->getPos().x <= SCREENBORDER) && (bullet->getPos().y >= -SCREENBORDER && bullet->getPos().y <= SCREENBORDER)))
 			{
-				iter = bullets.erase(iter);
-			}
-			else
-			{
-				iter++;
+				bullets.erase(bullets.begin() + i);
 			}
 		}
 	}
 	void ObjectManager::updateMonsters()
 	{
-		for (auto iterM = monsters.begin(); iterM < monsters.end(); iterM++)
+		for (int iM = monsters.size()-1; iM >= 0; iM--)
 		{
-			auto monster = *iterM;
-			for (auto iterB = bullets.begin(); iterB < bullets.end(); iterB++)
+			auto& monster = monsters[iM];
+			for (int iB = bullets.size()-1; iB >= 0; iB--)
 			{
-				auto bullet = *iterB;
+				auto& bullet = bullets[iB];
 				if (CM::getInstance()->checkCircleCollision(monster.get(), bullet.get()))
 				{
 					SM::getInstance()->stopAndPlaySound("zombieHit");
 
 					float damage = bullet->getDamage();
-					iterB = bullets.erase(iterB) - 1;
+					bullets.erase(bullets.begin()+iB);
 					monster->hit(damage);
 					if (monster->checkDie())
 					{
 						SM::getInstance()->stopAndPlaySound("zombieDie");
 
-						iterM = monsters.erase(iterM) - 1;
+						monsters.erase(monsters.begin() + iM);
 						ScoreManager::getInstance()->addKill(1);
 						break;
 					}
@@ -87,14 +86,53 @@ namespace jm
 	}
 	void ObjectManager::updateItems()
 	{
-		for (auto iter = items.begin(); iter < items.end(); iter++)
+		for (int i = items.size()-1; i >= 0; i--)
 		{
-			auto item = *iter;
+			auto& item = items[i];
 			if (CM::getInstance()->checkCircleCollision(player.get(), item.get()))
 			{
-				iter = items.erase(iter) - 1;
+				items.erase(items.begin() + i);
 				player->increasePower();
 			}
+		}
+	}
+
+	bool ObjectManager::gameoverManager()
+	{
+		for (int i = monsters.size()-1; i >= 0; i--)
+		{
+			auto& monster = monsters[i];
+			if (CM::getInstance()->checkCircleCollision(player.get(), monster.get()))
+			{
+				SM::getInstance()->stopSound("playerShoot");
+				SM::getInstance()->stopSound("zombieHit");
+				SM::getInstance()->stopSound("zombieDie");
+				SM::getInstance()->stopSound("bgm");
+
+				SM::getInstance()->playSound("gameover");
+				return true;
+			}
+		}
+		return false;
+	}
+
+	void ObjectManager::render()
+	{
+		player->render();
+		for (int i = items.size()-1; i >=0; i--)
+		{
+			auto& item = items[i];
+			item->render();
+		}
+		for (int i = bullets.size()-1; i >= 0 ; i--)
+		{
+			auto& bullet = bullets[i];
+			bullet->render();
+		}
+		for (int i = monsters.size()-1; i >= 0 ; i--)
+		{
+			auto& monster = monsters[i];
+			monster->render();
 		}
 	}
 
