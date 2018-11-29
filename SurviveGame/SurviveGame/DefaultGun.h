@@ -5,8 +5,6 @@ namespace jm
 {
 	class DefaultGun : public Gun
 	{
-	private:
-
 	public:
 		DefaultGun(const vec2& playerPos)
 			: Gun(playerPos, Delay(0.2f), 40.0f, 4.0f)

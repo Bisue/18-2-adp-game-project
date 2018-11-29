@@ -22,7 +22,7 @@ namespace jm
 	public:
 		//»ý¼ºÀÚ
 		Gun(const vec2& playerPos, const Delay& fireDelay, const float& bulletDamage, const float& bulletSpeed)
-			: firePoint(playerPos), fireDelay(fireDelay), bulletSpeed(bulletSpeed)
+			: firePoint(playerPos), fireDelay(fireDelay), bulletDamage(bulletDamage), bulletSpeed(bulletSpeed)
 		{ }
 
 		vec2 getFirePoint() const

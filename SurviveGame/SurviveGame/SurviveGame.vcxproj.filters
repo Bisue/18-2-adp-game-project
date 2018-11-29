@@ -147,6 +147,9 @@
     <ClInclude Include="ObjectManager.h">
       <Filter>소스 파일\Codes\Managers\VectorManager</Filter>
     </ClInclude>
+    <ClInclude Include="ShotGun.h">
+      <Filter>소스 파일\Codes\Objects\Guns</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

@@ -94,12 +94,14 @@ namespace jm
 			if (CM::getInstance()->checkCircleCollision(player.get(), item.get()))
 			{
 				items.erase(items.begin() + i);
-				player->increasePower();
+				//[미완] 플레이어 무기 교체
+				//player->increasePower();
 			}
 		}
 	}
 	void ObjectManager::updateStuffs()
 	{
+		player->update();
 		for (int i = bullets.size()-1; i >= 0; i--)
 		{
 			auto& bullet = bullets[i];
