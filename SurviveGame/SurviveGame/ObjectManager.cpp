@@ -10,6 +10,15 @@
 
 namespace jm
 {
+	ObjectManager* ObjectManager::getInstance()
+	{
+		if (instance = nullptr)
+		{
+			instance = new ObjectManager(vec2(0, 0), 5.0f);
+		}
+		return instance;
+	}
+
 	ObjectManager::ObjectManager(const vec2& playerStartPoint, const float& playerSpeed)
 	{
 		player = std::make_shared<Player>(playerStartPoint, playerSpeed);
@@ -88,4 +97,6 @@ namespace jm
 			}
 		}
 	}
+
+	ObjectManager* ObjectManager::instance = nullptr;
 }

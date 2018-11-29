@@ -116,7 +116,7 @@ namespace jm
 		{
 			switch ((ScoreManager::getInstance()->getKill()))
 			{
-			case 20:
+			case 1:
 				if (!isItemGiven[0])
 				{
 					items.push_back(new Item(vec2(RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER), RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER))));
