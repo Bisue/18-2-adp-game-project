@@ -3,7 +3,7 @@
 
 namespace jm
 { 
-	float GameTime::getDeltaTime()
+	float GameTime::getDeltaTime() const
 	{
 		return deltaTime;
 	}
@@ -12,7 +12,7 @@ namespace jm
 		deltaTime = dt;
 		runTime += dt;
 	}
-	float GameTime::getRunTime()
+	float GameTime::getRunTime() const
 	{
 		return runTime;
 	}

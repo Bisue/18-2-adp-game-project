@@ -2,7 +2,7 @@
 
 namespace jm
 {
-	float Randomization::randomFloat(float min, float max)
+	float Randomization::randomFloat(float min, float max) 
 	{
 		std::uniform_real_distribution<float> dist(min, max);
 		return dist(mer);

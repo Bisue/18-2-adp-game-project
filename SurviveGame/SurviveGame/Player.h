@@ -22,7 +22,7 @@ namespace jm
 			: GameObject(position, 0.05f), speed(speed)
 		{ }
 		//getter, setter
-		float getSpeed()
+		float getSpeed() const
 		{
 			return speed;
 		}
@@ -36,7 +36,7 @@ namespace jm
 		}
 
 		//methods
-		void shoot(std::vector<Bullet*>& bullets, const vec2& targetPos)
+		void shoot(std::vector<Bullet*>& bullets, const vec2& targetPos) 
 		{
 			if(fireDelay.check())
 			{

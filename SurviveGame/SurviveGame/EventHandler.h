@@ -18,7 +18,7 @@ namespace jm
 		{
 			callBacks.push_back(function);
 		}
-		void invokeAll()
+		void invokeAll() const
 		{
 			for (int i = 0; i < callBacks.size(); i++)
 			{

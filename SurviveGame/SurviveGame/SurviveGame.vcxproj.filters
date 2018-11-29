@@ -136,7 +136,7 @@
       <Filter>소스 파일\Codes\Managers\ScoreManager</Filter>
     </ClInclude>
     <ClInclude Include="Gun.h">
-      <Filter>소스 파일\Codes\Objects\Guns</Filter>
+      <Filter>소스 파일\Codes\Interfaces</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

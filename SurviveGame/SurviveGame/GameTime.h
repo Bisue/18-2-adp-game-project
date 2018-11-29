@@ -31,8 +31,8 @@ namespace jm
 			return instance;
 		}
 
-		float getDeltaTime();
+		float getDeltaTime() const;
 		void setDeltaTime(float dt);
-		float getRunTime();
+		float getRunTime() const;
 	};
 }

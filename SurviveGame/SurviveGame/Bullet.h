@@ -16,7 +16,7 @@ namespace jm
 		Bullet(const vec2& position, const float& damage = 1, const float speed = 5.0f, const RGB& color = Colors::red)
 			: GameObject(position, 0.01f), damage(damage), dir(vec2(0,0)), speed(speed), color(color)
 		{ }
-		float getDamage()
+		float getDamage() const
 		{
 			return damage;
 		}
