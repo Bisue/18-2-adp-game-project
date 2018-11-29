@@ -1,14 +1,18 @@
 #pragma once
 #include "Game2D.h"
 #include "Delay.h"
+#include "Bullet.h"
+#include "SoundManager.h"
+#include "ObjectManager.h"
 
 namespace jm
 {
 	class Gun
 	{
-	private:
+	protected:
 		vec2 firePoint; //총알 발사위치
 		Delay fireDelay; //발사 딜레이
+		float bulletDamage;
 		float bulletSpeed;
 		
 		//int maxBullets; //탄창 최대치
@@ -17,7 +21,7 @@ namespace jm
 
 	public:
 		//생성자
-		Gun(const vec2& playerPos, const Delay& fireDelay, const float& bulletSpeed)
+		Gun(const vec2& playerPos, const Delay& fireDelay, const float& bulletDamage, const float& bulletSpeed)
 			: firePoint(playerPos), fireDelay(fireDelay), bulletSpeed(bulletSpeed)
 		{ }
 
@@ -34,7 +38,15 @@ namespace jm
 		{
 			firePoint = playerPos;
 		}
-		 
+		
+		void shoot(const vec2& targetPos)
+		{
+			if (fireDelay.check())
+			{
+				fire(targetPos);
+			}
+		}
+
 		//void reload() //장전
 		//{
 		//	...

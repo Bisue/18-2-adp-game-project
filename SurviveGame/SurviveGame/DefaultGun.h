@@ -8,15 +8,20 @@ namespace jm
 	private:
 
 	public:
-		DefaultGun(const vec2& initPos,)
-			: Gun(initPos, Delay(0.3f), 4.0f)
+		DefaultGun(const vec2& playerPos)
+			: Gun(playerPos, Delay(0.2f), 40.0f, 4.0f)
 		{
 
 		}
 
 		void fire(const vec2& targetPos) override
 		{
+			SM::getInstance()->stopAndPlaySound("playerShoot");
 
+			Bullet bullet(firePoint, bulletDamage, 4.0f);
+			bullet.updateVelocityTo(targetPos);
+
+			OM::getInstance()->addBullet(bullet);
 		}
 	};
 }
