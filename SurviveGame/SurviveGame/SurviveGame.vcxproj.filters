@@ -176,5 +176,8 @@
     <ClCompile Include="ScoreManager.cpp">
       <Filter>소스 파일\Codes\Managers\ScoreManager</Filter>
     </ClCompile>
+    <ClCompile Include="ObjectManager.cpp">
+      <Filter>소스 파일\Codes\Managers\VectorManager</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

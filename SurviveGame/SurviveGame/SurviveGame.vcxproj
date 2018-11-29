@@ -154,6 +154,7 @@
     <ClCompile Include="Engine\Timer.cpp" />
     <ClCompile Include="GameTIme.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="Randomization.cpp" />
     <ClCompile Include="ScoreManager.cpp" />
     <ClCompile Include="SoundManager.cpp" />
