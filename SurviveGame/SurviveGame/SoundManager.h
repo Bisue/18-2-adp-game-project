@@ -41,4 +41,5 @@ namespace jm
 		void stopSound(const std::string& soundName);
 		void stopAndPlaySound(const std::string soundName); // 재생중이면 멈추고 다시재생
 	};
+	using SM = SoundManager;
 }

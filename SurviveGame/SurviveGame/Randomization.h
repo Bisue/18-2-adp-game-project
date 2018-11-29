@@ -4,7 +4,7 @@
 
 namespace jm
 {
-	//TODO: think if Singleton Pattern is required
+	//TODO: think that Singleton Pattern is required
 	class Randomization
 	{
 	private:

@@ -7,6 +7,8 @@ namespace jm
 	// [미사용]
 	// 리턴값이 없고, 매개변수를 받지 않는
 	// 콜백을 편하게 하기 위한 클래스
+
+	// template <typename RETURN, typename PARAM1, ...>
 	class EventHandler
 	{
 	private:

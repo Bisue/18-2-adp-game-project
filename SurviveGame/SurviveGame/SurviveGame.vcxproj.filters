@@ -64,6 +64,9 @@
     <Filter Include="소스 파일\Codes\Objects\Guns">
       <UniqueIdentifier>{ee4f2ecd-e47c-4dfc-9ce1-6b8a9d83d3f8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Codes\Objects\Monsters">
+      <UniqueIdentifier>{56454f4b-cf3d-4d7d-be3b-274055a2fb5f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bullet.h">
@@ -73,9 +76,6 @@
       <Filter>소스 파일\Codes\Objects</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>소스 파일\Codes\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Zombie.h">
       <Filter>소스 파일\Codes\Objects</Filter>
     </ClInclude>
     <ClInclude Include="Monster.h">
@@ -138,11 +138,14 @@
     <ClInclude Include="DefaultGun.h">
       <Filter>소스 파일\Codes\Objects\Guns</Filter>
     </ClInclude>
-    <ClInclude Include="BulletManager.h">
-      <Filter>소스 파일\Codes\Managers\VectorManager</Filter>
-    </ClInclude>
     <ClInclude Include="Constants.h">
       <Filter>소스 파일\Codes\GameVars</Filter>
+    </ClInclude>
+    <ClInclude Include="Zombie.h">
+      <Filter>소스 파일\Codes\Objects\Monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectManager.h">
+      <Filter>소스 파일\Codes\Managers\VectorManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

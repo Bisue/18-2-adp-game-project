@@ -17,19 +17,19 @@
 
 namespace jm
 {
+	//TODO: 벡터(Bullets, Monsters, Items)를 각각 감싸고 있는 Wrapper클래스 구현
+	//
 	class SurviveGame : public Game2D
 	{
-		using CM = CollisionManager;
-		using SM = SoundManager;
 	private:
-		vec2 playerSpawnPoint = vec2(0.0f, 0.0f);
 		CrossHair crossHair;
 		Player* player = nullptr;
 		std::vector<Bullet*> playerBullets;
 		std::vector<Zombie*> zombies;
 		std::vector<Item*> items;
 
-		int kill = 0;
+		vec2 playerSpawnPoint = vec2(0.0f, 0.0f);
+
 		bool isItemGiven[4] = { false,false,false,false };
 
 		bool gameover = false;
@@ -92,6 +92,7 @@ namespace jm
 					SM::getInstance()->stopSound("zombieHit");
 					SM::getInstance()->stopSound("zombieDie");
 					SM::getInstance()->stopSound("bgm");
+
 					SM::getInstance()->playSound("gameover");
 					gameover = true;
 				}
@@ -99,7 +100,7 @@ namespace jm
 		}
 		void updateScore()
 		{
-			ScoreManager::getInstance()->setScore(kill*5+int(RUNTIME));
+			ScoreManager::getInstance()->setScore(ScoreManager::getInstance()->getKill()*5+int(RUNTIME));
 		}
 		void spawnSpeedUp()
 		{
@@ -113,7 +114,7 @@ namespace jm
 		}
 		void giveItem()
 		{
-			switch (kill)
+			switch ((ScoreManager::getInstance()->getKill()))
 			{
 			case 20:
 				if (!isItemGiven[0])
@@ -283,7 +284,7 @@ namespace jm
 							zombies[i] = nullptr;
 							zombies.erase(zombies.begin() + i);
 
-							kill++;
+							ScoreManager::getInstance()->addKill(1);
 							break;
 						}
 					}

@@ -139,8 +139,8 @@
     <ClInclude Include="Gun.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Monster.h" />
+    <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="BulletManager.h" />
     <ClInclude Include="Randomization.h" />
     <ClInclude Include="ScoreManager.h" />
     <ClInclude Include="SoundManager.h" />

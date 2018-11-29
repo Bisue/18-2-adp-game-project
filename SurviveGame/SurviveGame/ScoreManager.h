@@ -8,6 +8,7 @@ namespace jm
 		static ScoreManager* instance;
 
 		int score = 0;
+		int kill = 0;
 
 		ScoreManager()
 		{ }
@@ -32,9 +33,21 @@ namespace jm
 		{
 			score = newScore;
 		}
+		int getKill()
+		{
+			return kill;
+		}
+		void setKill(const int& newKill)
+		{
+			kill = newKill;
+		}
 		void addScore(const int& point)
 		{
 			score += point;
+		}
+		void addKill(const int& kill)
+		{
+			this->kill += kill;
 		}
 
 		void reset()

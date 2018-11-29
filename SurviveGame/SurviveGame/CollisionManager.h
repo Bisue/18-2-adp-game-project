@@ -30,4 +30,5 @@ namespace jm
 		bool checkCircleCollision(const GameObject& go1, const GameObject* go2);
 		bool checkCircleCollision(const GameObject* go1, const GameObject& go2);
 	};
+	using CM = CollisionManager;
 }
