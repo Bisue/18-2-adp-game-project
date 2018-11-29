@@ -9,6 +9,7 @@ namespace jm
 	private:
 		vec2 firePoint; //총알 발사위치
 		Delay fireDelay; //발사 딜레이
+		float bulletSpeed;
 		
 		//int maxBullets; //탄창 최대치
 		//int curBullets; //탄창 잔량
@@ -16,10 +17,24 @@ namespace jm
 
 	public:
 		//생성자
-		Gun(const vec2& firePoint, const Delay& fireDelay)
-			: firePoint(firePoint), fireDelay(fireDelay)
+		Gun(const vec2& playerPos, const Delay& fireDelay, const float& bulletSpeed)
+			: firePoint(playerPos), fireDelay(fireDelay), bulletSpeed(bulletSpeed)
 		{ }
 
+		vec2 getFirePoint() const
+		{
+			return firePoint;
+		}
+		void setFirePoint(const vec2& newPoint)
+		{
+			firePoint = newPoint;
+		}
+		
+		void asyncPos(const vec2& playerPos)
+		{
+			firePoint = playerPos;
+		}
+		 
 		//void reload() //장전
 		//{
 		//	...

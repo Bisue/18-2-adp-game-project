@@ -102,9 +102,6 @@
     <ClInclude Include="EventHandler.h">
       <Filter>소스 파일\Codes\Utilities\EventHandler</Filter>
     </ClInclude>
-    <ClInclude Include="PtrVectorManager.h">
-      <Filter>소스 파일\Codes\Managers\VectorManager</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Colors.h">
       <Filter>소스 파일\Engine</Filter>
     </ClInclude>
@@ -138,6 +135,15 @@
     <ClInclude Include="Gun.h">
       <Filter>소스 파일\Codes\Interfaces</Filter>
     </ClInclude>
+    <ClInclude Include="DefaultGun.h">
+      <Filter>소스 파일\Codes\Objects\Guns</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletManager.h">
+      <Filter>소스 파일\Codes\Managers\VectorManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Constants.h">
+      <Filter>소스 파일\Codes\GameVars</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -151,9 +157,6 @@
     </ClCompile>
     <ClCompile Include="Randomization.cpp">
       <Filter>소스 파일\Codes\Utilities\Random</Filter>
-    </ClCompile>
-    <ClCompile Include="PtrVectorManager.cpp">
-      <Filter>소스 파일\Codes\Managers\VectorManager</Filter>
     </ClCompile>
     <ClCompile Include="Engine\DrawFunctions.cpp">
       <Filter>소스 파일\Engine</Filter>

@@ -122,7 +122,9 @@
   <ItemGroup>
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="CollisionManager.h" />
+    <ClInclude Include="Constants.h" />
     <ClInclude Include="CrossHair.h" />
+    <ClInclude Include="DefaultGun.h" />
     <ClInclude Include="Delay.h" />
     <ClInclude Include="Engine\Colors.h" />
     <ClInclude Include="Engine\DrawFunctions.h" />
@@ -138,7 +140,7 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="PtrVectorManager.h" />
+    <ClInclude Include="BulletManager.h" />
     <ClInclude Include="Randomization.h" />
     <ClInclude Include="ScoreManager.h" />
     <ClInclude Include="SoundManager.h" />
@@ -152,7 +154,6 @@
     <ClCompile Include="Engine\Timer.cpp" />
     <ClCompile Include="GameTIme.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="PtrVectorManager.cpp" />
     <ClCompile Include="Randomization.cpp" />
     <ClCompile Include="ScoreManager.cpp" />
     <ClCompile Include="SoundManager.cpp" />

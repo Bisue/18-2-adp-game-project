@@ -13,6 +13,7 @@
 #include "GameTime.h"
 #include "CrossHair.h"
 #include "ScoreManager.h"
+#include "Constants.h"
 
 namespace jm
 {
@@ -27,8 +28,6 @@ namespace jm
 		std::vector<Bullet*> playerBullets;
 		std::vector<Zombie*> zombies;
 		std::vector<Item*> items;
-
-		float screenBorder = 1.0f;
 
 		int kill = 0;
 		bool isItemGiven[4] = { false,false,false,false };
@@ -119,7 +118,7 @@ namespace jm
 			case 20:
 				if (!isItemGiven[0])
 				{
-					items.push_back(new Item(vec2(RD::getInstance()->randomFloat(-screenBorder, screenBorder), RD::getInstance()->randomFloat(-screenBorder, screenBorder))));
+					items.push_back(new Item(vec2(RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER), RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER))));
 					isItemGiven[0] = true;
 					SM::getInstance()->playSound("itemGen");
 				}
@@ -127,7 +126,7 @@ namespace jm
 			case 45:
 				if (!isItemGiven[1])
 				{
-					items.push_back(new Item(vec2(RD::getInstance()->randomFloat(-screenBorder, screenBorder), RD::getInstance()->randomFloat(-screenBorder, screenBorder))));
+					items.push_back(new Item(vec2(RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER), RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER))));
 					isItemGiven[1] = true;
 					SM::getInstance()->playSound("itemGen");
 				}
@@ -135,7 +134,7 @@ namespace jm
 			case 75:
 				if (!isItemGiven[2])
 				{
-					items.push_back(new Item(vec2(RD::getInstance()->randomFloat(-screenBorder, screenBorder), RD::getInstance()->randomFloat(-screenBorder, screenBorder))));
+					items.push_back(new Item(vec2(RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER), RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER))));
 					isItemGiven[2] = true;
 					SM::getInstance()->playSound("itemGen");
 				}
@@ -143,7 +142,7 @@ namespace jm
 			case 110:
 				if (!isItemGiven[3])
 				{
-					items.push_back(new Item(vec2(RD::getInstance()->randomFloat(-screenBorder, screenBorder), RD::getInstance()->randomFloat(-screenBorder, screenBorder))));
+					items.push_back(new Item(vec2(RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER), RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER))));
 					isItemGiven[3] = true;
 					SM::getInstance()->playSound("itemGen");
 				}
@@ -186,19 +185,19 @@ namespace jm
 			{
 				dir.x += 1.0f;
 			}
-			if (player->getPos().x <= -screenBorder)
+			if (player->getPos().x <= -SCREENBORDER)
 			{
 				dir.x = 1.0f;
 			}
-			if (player->getPos().x >= screenBorder)
+			if (player->getPos().x >= SCREENBORDER)
 			{
 				dir.x = -1.0f;
 			}
-			if (player->getPos().y <= -screenBorder)
+			if (player->getPos().y <= -SCREENBORDER)
 			{
 				dir.y = 1.0f;
 			}
-			if (player->getPos().y >= screenBorder)
+			if (player->getPos().y >= SCREENBORDER)
 			{
 				dir.y = -1.0f;
 			}
@@ -223,20 +222,20 @@ namespace jm
 			switch (sideFlag)
 			{
 			case 1:
-				spawnPoint.x = RD::getInstance()->randomFloat(-screenBorder, screenBorder);
+				spawnPoint.x = RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER);
 				spawnPoint.y = 1.2f;
 				break;
 			case 2:
 				spawnPoint.x = -1.2f;
-				spawnPoint.y = RD::getInstance()->randomFloat(-screenBorder, screenBorder);
+				spawnPoint.y = RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER);
 				break;
 			case 3:
-				spawnPoint.x = RD::getInstance()->randomFloat(-screenBorder, screenBorder);
+				spawnPoint.x = RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER);
 				spawnPoint.y = -1.2f;
 				break;
 			case 4:
 				spawnPoint.x = 1.2f;
-				spawnPoint.y = RD::getInstance()->randomFloat(-screenBorder, screenBorder);
+				spawnPoint.y = RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER);
 				break;
 			}
 			if (spawnDelay.check())
@@ -249,7 +248,7 @@ namespace jm
 			for (auto iter = playerBullets.begin(); iter<playerBullets.end();)
 			{
 				auto bullet = *iter;
-				if (!((bullet->getPos().x >= -screenBorder&&bullet->getPos().x <= screenBorder) && (bullet->getPos().y >= -screenBorder &&bullet->getPos().y <= screenBorder)))
+				if (!((bullet->getPos().x >= -SCREENBORDER &&bullet->getPos().x <= SCREENBORDER) && (bullet->getPos().y >= -SCREENBORDER &&bullet->getPos().y <= SCREENBORDER)))
 				{
 					delete bullet;
 					iter = playerBullets.erase(iter);
