@@ -76,6 +76,12 @@ namespace jm
 		void gameoverManage()
 		{
 			gameover = OM::getInstance()->gameoverManager();
+			if (gameover)
+			{
+				std::cout << "Survive Time = " << RUNTIME <<"(s)" << std::endl;
+				std::cout << "Kill = " << ScoreManager::getInstance()->getKill() << std::endl;
+				std::cout << "Your Score = " << ScoreManager::getInstance()->getScore() << std::endl;
+			}
 		}
 		void updateScore()
 		{
