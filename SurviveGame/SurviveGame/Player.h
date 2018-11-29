@@ -27,7 +27,7 @@ namespace jm
 		{
 			std::shared_ptr<DefaultGun> startingGun = std::make_shared<DefaultGun>(position);
 			eqGun = std::static_pointer_cast<std::shared_ptr<Gun>::element_type>(startingGun);
-			chaneGun();
+			chaneGun(); //디버그용
 		}
 		//getter, setter
 		float getSpeed() const
@@ -44,7 +44,7 @@ namespace jm
 		{
 			eqGun->asyncPos(position);
 		}
-		void chaneGun()
+		void chaneGun() //미완(디버그용)
 		{
 			eqGun.reset();
 			std::shared_ptr<ShotGun> useGun = std::make_shared<ShotGun>(position);
