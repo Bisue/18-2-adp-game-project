@@ -1,7 +1,7 @@
 #include "ObjectManager.h"
 #include "Player.h"
 #include "Bullet.h"
-#include "Monster.h"
+#include "Zombie.h"
 #include "Item.h"
 #include "CollisionManager.h"
 #include "SoundManager.h"
@@ -14,7 +14,7 @@ namespace jm
 	{
 		if (instance == nullptr)
 		{
-			instance = new ObjectManager(vec2(0, 0), 5.0f);
+			instance = new ObjectManager(vec2(0, 0), 1.0f);
 		}
 		return instance;
 	}
@@ -27,17 +27,18 @@ namespace jm
 	{
 		player = std::make_shared<Player>(playerStartPoint, playerSpeed);
 	}
-	void ObjectManager::addBullet(Bullet& bullet)
+	void ObjectManager::addBullet(const Bullet& bullet)
 	{
 		bullets.push_back(std::make_shared<Bullet>(bullet));
 	}
-	void ObjectManager::addItem(Item& item)
+	void ObjectManager::addItem(const Item& item)
 	{
 		items.push_back(std::make_shared<Item>(item));
 	}
-	void ObjectManager::addMonster(Monster& monster)
+	void ObjectManager::addZombie(const Zombie& zombie)
 	{
-		monsters.push_back(std::make_shared<Monster>(monster));
+		std::shared_ptr<Zombie> temp = std::make_shared<Zombie>(zombie);
+		monsters.push_back(std::static_pointer_cast<std::shared_ptr<Monster>::element_type>(temp));
 	}
 
 	void ObjectManager::update()
@@ -62,6 +63,7 @@ namespace jm
 		for (int iM = monsters.size()-1; iM >= 0; iM--)
 		{
 			auto& monster = monsters[iM];
+			monster->moveTo(player->getPos());
 			for (int iB = bullets.size()-1; iB >= 0; iB--)
 			{
 				auto& bullet = bullets[iB];
@@ -94,6 +96,19 @@ namespace jm
 				items.erase(items.begin() + i);
 				player->increasePower();
 			}
+		}
+	}
+	void ObjectManager::updateStuffs()
+	{
+		for (int i = bullets.size()-1; i >= 0; i--)
+		{
+			auto& bullet = bullets[i];
+			bullet->update();
+		}
+		for (int i = items.size() - 1; i >= 0; i--)
+		{
+			auto& item = items[i];
+			item->update();
 		}
 	}
 

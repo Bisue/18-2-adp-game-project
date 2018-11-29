@@ -14,6 +14,7 @@
 #include "CrossHair.h"
 #include "ScoreManager.h"
 #include "Constants.h"
+#include "ObjectManager.h"
 
 namespace jm
 {
@@ -23,12 +24,6 @@ namespace jm
 	{
 	private:
 		CrossHair crossHair;
-		Player* player = nullptr;
-		std::vector<Bullet*> playerBullets;
-		std::vector<Zombie*> zombies;
-		std::vector<Item*> items;
-
-		vec2 playerSpawnPoint = vec2(0.0f, 0.0f);
 
 		bool isItemGiven[4] = { false,false,false,false };
 
@@ -50,8 +45,6 @@ namespace jm
 
 			//BGM
 			SM::getInstance()->playSound("bgm");
-
-			player = new Player(playerSpawnPoint, 1.0f);
 		}
 		void update() override
 		{
@@ -60,10 +53,8 @@ namespace jm
 				inputManage();
 				spawnZombie();
 				updateStuffs();
-				bulletManage();
-				zombieManage();
 				giveItem();
-				itemManage();
+				OM::getInstance()->update();
 				gameoverManage();
 				spawnSpeedUp();
 				updateScore();
@@ -84,19 +75,7 @@ namespace jm
 		}
 		void gameoverManage()
 		{
-			for (int i = 0; i < zombies.size(); i++)
-			{
-				if (CM::getInstance()->checkCircleCollision(player, zombies[i]))
-				{
-					SM::getInstance()->stopSound("playerShoot");
-					SM::getInstance()->stopSound("zombieHit");
-					SM::getInstance()->stopSound("zombieDie");
-					SM::getInstance()->stopSound("bgm");
-
-					SM::getInstance()->playSound("gameover");
-					gameover = true;
-				}
-			}
+			gameover = OM::getInstance()->gameoverManager();
 		}
 		void updateScore()
 		{
@@ -119,7 +98,7 @@ namespace jm
 			case 1:
 				if (!isItemGiven[0])
 				{
-					items.push_back(new Item(vec2(RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER), RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER))));
+					OM::getInstance()->addItem(Item(vec2(RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER), RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER))));
 					isItemGiven[0] = true;
 					SM::getInstance()->playSound("itemGen");
 				}
@@ -127,7 +106,7 @@ namespace jm
 			case 45:
 				if (!isItemGiven[1])
 				{
-					items.push_back(new Item(vec2(RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER), RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER))));
+					OM::getInstance()->addItem(Item(vec2(RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER), RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER))));
 					isItemGiven[1] = true;
 					SM::getInstance()->playSound("itemGen");
 				}
@@ -135,7 +114,7 @@ namespace jm
 			case 75:
 				if (!isItemGiven[2])
 				{
-					items.push_back(new Item(vec2(RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER), RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER))));
+					OM::getInstance()->addItem(Item(vec2(RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER), RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER))));
 					isItemGiven[2] = true;
 					SM::getInstance()->playSound("itemGen");
 				}
@@ -143,27 +122,11 @@ namespace jm
 			case 110:
 				if (!isItemGiven[3])
 				{
-					items.push_back(new Item(vec2(RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER), RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER))));
+					OM::getInstance()->addItem(Item(vec2(RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER), RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER))));
 					isItemGiven[3] = true;
 					SM::getInstance()->playSound("itemGen");
 				}
 				break;
-			}
-		}
-		void itemManage()
-		{
-			for (auto iter = items.begin(); iter < items.end();)
-			{
-				if (CM::getInstance()->checkCircleCollision(player, *iter))
-				{
-					delete *iter;
-					iter = items.erase(iter);
-					player->increasePower();
-				}
-				else
-				{
-					iter++;
-				}
 			}
 		}
 		void inputManage()
@@ -186,6 +149,7 @@ namespace jm
 			{
 				dir.x += 1.0f;
 			}
+			auto& player = OM::getInstance()->getPlayer();
 			if (player->getPos().x <= -SCREENBORDER)
 			{
 				dir.x = 1.0f;
@@ -211,7 +175,7 @@ namespace jm
 			//shoot
 			if (isMouseButtonPressed(GLFW_MOUSE_BUTTON_LEFT))
 			{
-				player->shoot(playerBullets, mousePos);
+				player->shoot(mousePos);
 			}
 			//crossHair 업데이트
 			crossHair.updateMousePos(mousePos);
@@ -241,82 +205,16 @@ namespace jm
 			}
 			if (spawnDelay.check())
 			{
-				zombies.push_back(new Zombie(spawnPoint));
-			}
-		}
-		void bulletManage()
-		{
-			for (auto iter = playerBullets.begin(); iter<playerBullets.end();)
-			{
-				auto bullet = *iter;
-				if (!((bullet->getPos().x >= -SCREENBORDER &&bullet->getPos().x <= SCREENBORDER) && (bullet->getPos().y >= -SCREENBORDER &&bullet->getPos().y <= SCREENBORDER)))
-				{
-					delete bullet;
-					iter = playerBullets.erase(iter);
-				}
-				else
-				{
-					iter++;
-				}
-			}
-		}
-		void zombieManage()
-		{
-			for (int i = zombies.size()-1; i >=0; i--)
-			{
-				zombies[i]->moveTo(player->getPos());
-				for (int j = playerBullets.size()-1; j >= 0; j--)
-				{
-					if(CM::getInstance()->checkCircleCollision(zombies[i], playerBullets[j]))
-					{
-						SM::getInstance()->stopAndPlaySound("zombieHit");
-
-						float damage = playerBullets[j]->getDamage();
-						delete playerBullets[j];
-						playerBullets[j] = nullptr;
-						playerBullets.erase(playerBullets.begin() + j);
-						zombies[i]->hit(damage);
-						if (zombies[i]->checkDie())
-						{
-							SM::getInstance()->stopAndPlaySound("zombieDie");
-
-							delete zombies[i];
-							zombies[i] = nullptr;
-							zombies.erase(zombies.begin() + i);
-
-							ScoreManager::getInstance()->addKill(1);
-							break;
-						}
-					}
-				}
+				OM::getInstance()->addZombie(Zombie(spawnPoint));
 			}
 		}
 		void updateStuffs()
 		{
-			for (int i = 0; i < playerBullets.size(); i++)
-			{
-				playerBullets[i]->update();
-			}
-			for (int i = 0; i < items.size(); i++)
-			{
-				items[i]->update();
-			}
+			OM::getInstance()->updateStuffs();
 		}
 		void render()
 		{
-			player->render();
-			for (int i = 0; i < items.size(); i++)
-			{
-				items[i]->render();
-			}
-			for (int i = 0; i < playerBullets.size(); i++)
-			{
-				playerBullets[i]->render();
-			}
-			for (int i = 0; i < zombies.size(); i++)
-			{
-				zombies[i]->render();
-			}
+			OM::getInstance()->render();
 			crossHair.render();
 		}
 		void debug()

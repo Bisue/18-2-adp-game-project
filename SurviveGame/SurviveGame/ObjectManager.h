@@ -5,12 +5,17 @@
 
 namespace jm
 {
-	//[미사용:버그]
-	//vector for도는과정에서 오류가 생김.
-
+	//issues
+	//1. vector 순환과정에서의 버그 있었음
+	//- 기존(버그남): auto iter = xxx.begin() 을 이용해 for돌림
+	//- 현재: 인덱스로 돌림
+	//- 해결된 것으로 보임
+	//2. std::shared_ptr에서의 다형성 문제
+	//- std::static_pointer_cast로 해결된 것으로 보임
 	class Player;
 	class Bullet;
 	class Monster;
+	class Zombie;
 	class Item;
 
 	class ObjectManager
@@ -31,14 +36,15 @@ namespace jm
 
 		std::shared_ptr<Player>& getPlayer();
 		//add
-		void addBullet(Bullet& bullet);
-		void addItem(Item& item);
-		void addMonster(Monster& monster);
+		void addBullet(const Bullet& bullet);
+		void addItem(const Item& item);
+		void addZombie(const Zombie& zombie);
 		//update
 		void update();
 		void updateBullets();
 		void updateMonsters();
 		void updateItems();
+		void updateStuffs();
 		//manage
 		bool gameoverManager();
 		//render

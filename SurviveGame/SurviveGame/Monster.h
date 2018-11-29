@@ -116,7 +116,10 @@ namespace jm
 			}
 			endTransformation();
 		}
-		//pure virtual methods
-		virtual void drawBody() const = 0;
+		//virtual methods
+		virtual void drawBody() const
+		{
+			std::cout << "mom's draw" << std::endl;
+		}
 	};
 }

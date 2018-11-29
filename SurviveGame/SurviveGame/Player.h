@@ -4,6 +4,7 @@
 #include <vector>
 #include "SoundManager.h"
 #include "Delay.h"
+#include "ObjectManager.h"
 
 namespace jm
 {
@@ -36,16 +37,16 @@ namespace jm
 		}
 
 		//methods
-		void shoot(std::vector<Bullet*>& bullets, const vec2& targetPos) 
+		void shoot(const vec2& targetPos) 
 		{
 			if(fireDelay.check())
 			{
 				SM::getInstance()->stopAndPlaySound("playerShoot");
 
-				Bullet* bullet = new Bullet(position, powerLevel*40.0f, 4.0f);
-				bullet->updateVelocityTo(targetPos);
+				Bullet bullet(position, powerLevel*40.0f, 4.0f);
+				bullet.updateVelocityTo(targetPos);
 
-				bullets.push_back(bullet);
+				OM::getInstance()->addBullet(bullet);
 			}
 		}
 		void move(vec2 dirVector)
