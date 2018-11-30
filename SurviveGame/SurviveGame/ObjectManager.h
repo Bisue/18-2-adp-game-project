@@ -17,6 +17,8 @@ namespace jm
 	class Bullet;
 	class Monster;
 	class Zombie;
+	class Runner;
+	class Tanker;
 	class Item;
 
 	class ObjectManager
@@ -40,6 +42,8 @@ namespace jm
 		void addBullet(const Bullet& bullet);
 		void addItem(const Item& item);
 		void addZombie(const Zombie& zombie);
+		void addRunner(const Runner& runner);
+		void addTanker(const Tanker& tanker);
 		//update
 		void update();
 		void updateBullets();

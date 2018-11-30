@@ -3,6 +3,8 @@
 #include "Player.h"
 #include "Bullet.h"
 #include "Zombie.h"
+#include "Runner.h"
+#include "Tanker.h"
 #include <random>
 #include <vector>
 #include "Randomization.h"
@@ -30,8 +32,12 @@ namespace jm
 
 		bool gameover = false;
 
-		Delay spawnDelay = Delay(1.5f);
-		Delay spawnSpeedUpDelay = Delay(1.0f);
+		Delay zombieSpawnDelay = Delay(1.5f);
+		Delay zombieSpawnSpeedUpDelay = Delay(2.0f);
+		Delay runnerSpawnDelay = Delay(3.5f);
+		Delay runnerSpawnSpeedUpDelay = Delay(4.0f);
+		Delay tankerSpawnDelay = Delay(15.0f);
+		Delay tankerSpawnSpeedUpDelay = Delay(20.0f);
 
 	public:
 		SurviveGame()
@@ -75,13 +81,14 @@ namespace jm
 			std::vector<std::reference_wrapper<Alphabet>> youdied;
 			std::vector<std::reference_wrapper<Alphabet>> enter;
 
-			//youdied
+			//YOU DIED
 			AlphaY a1(vec2(-fontSize, fontSize), Colors::red, fontSize);
 			youdied.push_back(a1);
 			AlphaO a2(vec2(0, fontSize), Colors::red, fontSize);
 			youdied.push_back(a2);
 			AlphaU a3(vec2(fontSize, fontSize), Colors::red, fontSize);
 			youdied.push_back(a3);
+
 			AlphaD a4(vec2(-1.5f*fontSize, 0), Colors::red, fontSize);
 			youdied.push_back(a4);
 			AlphaI a5(vec2(-0.5f*fontSize, 0), Colors::red, fontSize);
@@ -91,7 +98,7 @@ namespace jm
 			AlphaD a7(vec2(1.5f*fontSize, 0), Colors::red, fontSize);
 			youdied.push_back(a7);
 
-			//press esc to exit
+			//PRESS ESC TO EXIT
 			AlphaP b1(vec2(-4*fontSize1, -2 * fontSize1), Colors::black, fontSize1);
 			enter.push_back(b1);
 			AlphaR b2(vec2(-3*fontSize1, -2 * fontSize1), Colors::black, fontSize1);
@@ -124,7 +131,7 @@ namespace jm
 			AlphaT b14(vec2(3*fontSize1, -3 * fontSize1), Colors::black, fontSize1);
 			enter.push_back(b14);
 
-
+			//render
 			for (auto alpha : youdied)
 			{
 				alpha.get().render();
@@ -139,9 +146,9 @@ namespace jm
 			gameover = OM::getInstance()->gameoverManager();
 			if (gameover)
 			{
-				std::cout << "Survive Time = " << RUNTIME <<"(s)" << std::endl;
-				std::cout << "Kill = " << ScoreManager::getInstance()->getKill() << std::endl;
-				std::cout << "Your Score = " << ScoreManager::getInstance()->getScore() << std::endl;
+				std::cout << "\n생존 시간 = " << RUNTIME <<"(초)" << std::endl;
+				std::cout << "킬 수 = " << ScoreManager::getInstance()->getKill() << std::endl;
+				std::cout << "총 점수 = " << ScoreManager::getInstance()->getScore() << std::endl;
 			}
 		}
 		void updateScore()
@@ -150,11 +157,25 @@ namespace jm
 		}
 		void spawnSpeedUp()
 		{
-			if (spawnDelay.getDelay() >= 0.1f)
+			if (zombieSpawnDelay.getDelay() >= 0.65f)
 			{
-				if (spawnSpeedUpDelay.check())
+				if (zombieSpawnSpeedUpDelay.check())
 				{
-					spawnDelay.setDelay(spawnDelay.getDelay()*0.98f);
+					zombieSpawnDelay.setDelay(zombieSpawnDelay.getDelay()*0.98f);
+				}
+			}
+			if (runnerSpawnSpeedUpDelay.getDelay() >= 1.5f)
+			{
+				if (runnerSpawnSpeedUpDelay.check())
+				{
+					runnerSpawnDelay.setDelay(runnerSpawnDelay.getDelay()*0.98f);
+				}
+			}
+			if (tankerSpawnSpeedUpDelay.getDelay() >= 8.0f)
+			{
+				if (tankerSpawnSpeedUpDelay.check())
+				{
+					tankerSpawnDelay.setDelay(tankerSpawnDelay.getDelay()*0.98f);
 				}
 			}
 		}
@@ -162,7 +183,7 @@ namespace jm
 		{
 			switch ((ScoreManager::getInstance()->getKill()))
 			{
-			case 1:
+			case 5:
 				if (!isItemGiven[0])
 				{
 					OM::getInstance()->addItem(Item(vec2(RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER), RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER))));
@@ -170,7 +191,7 @@ namespace jm
 					SM::getInstance()->playSound("itemGen");
 				}
 				break;
-			case 2:
+			case 10:
 				if (!isItemGiven[1])
 				{
 					OM::getInstance()->addItem(Item(vec2(RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER), RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER))));
@@ -178,7 +199,7 @@ namespace jm
 					SM::getInstance()->playSound("itemGen");
 				}
 				break;
-			case 3:
+			case 15:
 				if (!isItemGiven[2])
 				{
 					OM::getInstance()->addItem(Item(vec2(RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER), RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER))));
@@ -186,7 +207,7 @@ namespace jm
 					SM::getInstance()->playSound("itemGen");
 				}
 				break;
-			case 4:
+			case 20:
 				if (!isItemGiven[3])
 				{
 					OM::getInstance()->addItem(Item(vec2(RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER), RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER))));
@@ -284,9 +305,17 @@ namespace jm
 				spawnPoint.y = RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER);
 				break;
 			}
-			if (spawnDelay.check())
+			if (zombieSpawnDelay.check())
 			{
 				OM::getInstance()->addZombie(Zombie(spawnPoint));
+			}
+			if (runnerSpawnDelay.check())
+			{
+				OM::getInstance()->addRunner(Runner(spawnPoint));
+			}
+			if (tankerSpawnDelay.check())
+			{
+				OM::getInstance()->addTanker(Tanker(spawnPoint));
 			}
 		}
 		void render()

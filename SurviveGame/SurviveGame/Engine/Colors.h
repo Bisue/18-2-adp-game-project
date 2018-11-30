@@ -23,5 +23,11 @@ namespace jm
 
 		const RGB darkgreen(0, 45, 0);
 		const RGB deepdartgreen(0, 20, 0);
+		
+		const RGB darkred(110, 0, 0);
+		const RGB deepdarkred(80, 0, 0);
+
+		const RGB darkcrystal(24, 68, 76);
+		const RGB deepdarkcrystal(10, 54, 59);
 	}
 }

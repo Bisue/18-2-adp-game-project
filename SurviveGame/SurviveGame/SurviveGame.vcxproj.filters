@@ -162,6 +162,12 @@
     <ClInclude Include="Alphabets.h">
       <Filter>소스 파일\Codes\ETCGraphics\Alphabet</Filter>
     </ClInclude>
+    <ClInclude Include="Runner.h">
+      <Filter>소스 파일\Codes\Objects\Monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="Tanker.h">
+      <Filter>소스 파일\Codes\Objects\Monsters</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

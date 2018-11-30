@@ -2,6 +2,8 @@
 #include "Player.h"
 #include "Bullet.h"
 #include "Zombie.h"
+#include "Runner.h"
+#include "Tanker.h"
 #include "Item.h"
 #include "CollisionManager.h"
 #include "SoundManager.h"
@@ -38,6 +40,16 @@ namespace jm
 	void ObjectManager::addZombie(const Zombie& zombie)
 	{
 		std::shared_ptr<Zombie> temp = std::make_shared<Zombie>(zombie);
+		monsters.push_back(std::static_pointer_cast<std::shared_ptr<Monster>::element_type>(temp));
+	}
+	void ObjectManager::addRunner(const Runner& runner)
+	{
+		std::shared_ptr<Runner> temp = std::make_shared<Runner>(runner);
+		monsters.push_back(std::static_pointer_cast<std::shared_ptr<Monster>::element_type>(temp));
+	}
+	void ObjectManager::addTanker(const Tanker& tanker)
+	{
+		std::shared_ptr<Tanker> temp = std::make_shared<Tanker>(tanker);
 		monsters.push_back(std::static_pointer_cast<std::shared_ptr<Monster>::element_type>(temp));
 	}
 

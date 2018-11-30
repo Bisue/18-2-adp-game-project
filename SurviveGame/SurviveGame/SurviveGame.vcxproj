@@ -155,11 +155,13 @@
     <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Randomization.h" />
+    <ClInclude Include="Runner.h" />
     <ClInclude Include="ScoreManager.h" />
     <ClInclude Include="ShotGun.h" />
     <ClInclude Include="SmgGun.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="SurviveGame.h" />
+    <ClInclude Include="Tanker.h" />
     <ClInclude Include="Zombie.h" />
   </ItemGroup>
   <ItemGroup>
