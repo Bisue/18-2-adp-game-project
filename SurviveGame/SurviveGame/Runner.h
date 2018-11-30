@@ -10,7 +10,7 @@ namespace jm
 
 	public:
 		Runner(const vec2 position)
-			: Monster(position, 0.6f, 0.06f, 40.0f, Delay(5.0f), 100.0f)
+			: Monster(position, 0.5f, 0.06f, 40.0f, Delay(5.0f), 100.0f)
 		{
 
 		}

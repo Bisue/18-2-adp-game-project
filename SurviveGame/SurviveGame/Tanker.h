@@ -10,7 +10,7 @@ namespace jm
 
 	public:
 		Tanker(const vec2 position)
-			: Monster(position, 0.2f, 0.3f, 500.0f, Delay(1.0f), 2.0f)
+			: Monster(position, 0.1f, 0.3f, 500.0f, Delay(1.0f), 2.0f)
 		{
 
 		}

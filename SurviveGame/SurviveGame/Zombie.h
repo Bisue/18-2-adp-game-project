@@ -10,7 +10,7 @@ namespace jm
 
 	public:
 		Zombie(const vec2 position)
-			: Monster(position, 0.4f, 0.05f, 100.0f, Delay(1.0f), 0.5f)
+			: Monster(position, 0.3f, 0.05f, 100.0f, Delay(1.0f), 0.5f)
 		{
 
 		}
