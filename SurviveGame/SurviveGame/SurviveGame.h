@@ -15,6 +15,7 @@
 #include "ScoreManager.h"
 #include "Constants.h"
 #include "ObjectManager.h"
+#include "Alphabets.h"
 
 namespace jm
 {
@@ -69,9 +70,15 @@ namespace jm
 		
 		void gameoverScreen()
 		{
-			beginTransformation();
-			drawFilledStar(Colors::red, 1.0f, 0.5f);
-			endTransformation();
+			AlphaA a(vec2(-0.5f, 0), Colors::black, 0.25f);
+			AlphaB b(vec2(-0.25f, 0), Colors::black, 0.25f);
+			AlphaC c(vec2(0.25f, 0), Colors::black, 0.25f);
+			AlphaD d(vec2(0.5f, 0), Colors::black, 0.25f);
+			a.render();
+			b.render();
+			c.render();
+			d.render();
+
 		}
 		void gameoverManage()
 		{

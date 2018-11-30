@@ -9,12 +9,24 @@ namespace jm
 		vec2 position;
 		RGB color;
 		float size;
+		float cellSize;
+
+		int canvas[5][5];
+		vec2 cellPos[5][5];
 		
 	public:
 		//constructor
-		Alphabet(const vec2& position, const RGB& color, const float size)
-			: position(position), color(color), size(size)
-		{ }
+		Alphabet(const vec2& position, const RGB& color, const float size = 0.5f)
+			: position(position), color(color), size(size), cellSize((size / 5.0f)*0.9f)
+		{
+			for (int i = 0; i < 5; i++)
+			{
+				for (int j = 0; j < 5; j++)
+				{
+					cellPos[i][j] = vec2(-(2 * cellSize) + (j*cellSize), +(2 * cellSize) - (i*cellSize));
+				}
+			}
+		}
 
 		//getter, setter
 		vec2 getPos()
@@ -42,7 +54,39 @@ namespace jm
 			size = newSize;
 		}
 
+		//canvas setting
+		void setText(int text[5][5])
+		{
+			for (int i = 0; i < 5; i++)
+			{
+				for (int j = 0; j < 5; j++)
+				{
+					canvas[i][j] = text[i][j];
+				}
+			}
+		}
+
 		//render
-		virtual void render() = 0;
+		void render()
+		{
+			beginTransformation();
+			translate(position);
+			for (int i = 0; i < 5; i++)
+			{
+				for (int j = 0; j < 5; j++)
+				{
+					if (canvas[i][j] == 1)
+					{
+						beginTransformation();
+						{
+							translate(cellPos[i][j]);
+							drawFilledBox(color, cellSize, cellSize);
+						}
+						endTransformation();
+					}
+				}
+			}
+			endTransformation();
+		}
 	};
 }
