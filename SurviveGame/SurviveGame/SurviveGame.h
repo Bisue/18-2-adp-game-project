@@ -73,7 +73,7 @@ namespace jm
 				gameoverScreen();
 			}
 		}
-		
+
 		void gameoverScreen()
 		{
 			float fontSize = 0.2f;
