@@ -1,2 +1,3 @@
-# ADPGameProject
-ADPGameProject Codes
+## 2018 심화프로그래밍(홍정모 교수님) 게임프로젝트 과제
+# Zombie Survive Game
+# 2018112041 변찬혁
