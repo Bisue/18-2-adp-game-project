@@ -6,6 +6,7 @@
 
 namespace jm
 {
+	//singleton
 	class SoundManager
 	{
 	private:
@@ -22,19 +23,9 @@ namespace jm
 		SoundManager();
 
 	public:
-		static SoundManager* getInstance()
-		{
-			if (instance == nullptr)
-			{
-				instance = new SoundManager();
-			}
-			return instance;
-		}
+		static SoundManager* getInstance();
 
-		~SoundManager()
-		{
-			system->release();
-		}
+		~SoundManager();
 
 		void initSound(const std::string& filename, const std::string& soundName, const bool& loop);
 		void playSound(const std::string& soundName);

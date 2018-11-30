@@ -2,13 +2,14 @@
 
 namespace jm
 {
+	//singleton
 	class ScoreManager
 	{
 	private:
 		static ScoreManager* instance;
 
-		int score = 0;
-		int kill = 0;
+		int score = 0; //점수
+		int kill = 0;  //킬 수
 
 		ScoreManager()
 		{ }
@@ -16,43 +17,18 @@ namespace jm
 		{ }
 
 	public:
-		static ScoreManager* getInstance()
-		{
-			if (instance == nullptr)
-			{
-				instance = new ScoreManager();
-			}
-			return instance;
-		}
+		static ScoreManager* getInstance();
 
-		int getScore()
-		{
-			return score;
-		}
-		void setScore(const int& newScore)
-		{
-			score = newScore;
-		}
-		int getKill()
-		{
-			return kill;
-		}
-		void setKill(const int& newKill)
-		{
-			kill = newKill;
-		}
-		void addScore(const int& point)
-		{
-			score += point;
-		}
-		void addKill(const int& kill)
-		{
-			this->kill += kill;
-		}
+		//getter, setter, adder
+		int getScore();
+		void setScore(const int& newScore);
+		void addScore(const int& point);
+		int getKill();
+		void setKill(const int& newKill);
+		void addKill(const int& kill);
 
-		void reset()
-		{
-			score = 0;
-		}
+		//점수, 킬 수 초기화
+		void reset();
 	};
+	using SCM = ScoreManager;
 }

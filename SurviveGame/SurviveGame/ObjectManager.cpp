@@ -43,6 +43,7 @@ namespace jm
 
 	void ObjectManager::update()
 	{
+		updateStuffs();
 		updateBullets();
 		updateMonsters();
 		updateItems();
@@ -94,8 +95,8 @@ namespace jm
 			if (CM::getInstance()->checkCircleCollision(player.get(), item.get()))
 			{
 				items.erase(items.begin() + i);
-				//[미완] 플레이어 무기 교체
-				//player->increasePower();
+				player->enableGun();
+				player->changeGun(player->getNextUnlockGunNum()-1);
 			}
 		}
 	}
@@ -121,7 +122,9 @@ namespace jm
 			auto& monster = monsters[i];
 			if (CM::getInstance()->checkCircleCollision(player.get(), monster.get()))
 			{
-				SM::getInstance()->stopSound("playerShoot");
+				SM::getInstance()->stopSound("defaultGunShoot");
+				SM::getInstance()->stopSound("shotGunShoot");
+				SM::getInstance()->stopSound("smgGunShoot");
 				SM::getInstance()->stopSound("zombieHit");
 				SM::getInstance()->stopSound("zombieDie");
 				SM::getInstance()->stopSound("bgm");

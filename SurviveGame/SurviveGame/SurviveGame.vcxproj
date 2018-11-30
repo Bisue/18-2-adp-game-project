@@ -144,6 +144,7 @@
     <ClInclude Include="Randomization.h" />
     <ClInclude Include="ScoreManager.h" />
     <ClInclude Include="ShotGun.h" />
+    <ClInclude Include="SmgGun.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="SurviveGame.h" />
     <ClInclude Include="Zombie.h" />

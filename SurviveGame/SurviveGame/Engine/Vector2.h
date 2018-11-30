@@ -35,13 +35,13 @@ namespace jm
 			return x * v.x + y * v.y;
 		}
 
-		T getMagnitude()
+		T getMagnitude() const
 		{
 			return std::sqrt(x * x + y * y);
 		}
 
 		//방향이 같고 크기가 1 or 0(zero벡터)인 벡터 반환
-		Vector2<T> nomalized()
+		Vector2<T> nomalized() const
 		{
 			Vector2<T> temp = *this;
 			if (temp.getMagnitude() != 0)
@@ -52,7 +52,7 @@ namespace jm
 		}
 
 		//현재 백터의 각도(vec2(1,0)이면 0도)를 반환(radian)
-		float getRad()
+		float getRad() const
 		{
 			float rad = atan2(y, x);
 			return rad;

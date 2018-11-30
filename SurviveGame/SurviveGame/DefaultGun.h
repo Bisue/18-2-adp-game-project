@@ -7,16 +7,16 @@ namespace jm
 	{
 	public:
 		DefaultGun(const vec2& playerPos)
-			: Gun(playerPos, Delay(0.2f), 40.0f, 4.0f)
+			: Gun(playerPos, Delay(0.35f), 35.0f, 3.0f)
 		{
 
 		}
 
 		void fire(const vec2& targetPos) override
 		{
-			SM::getInstance()->stopAndPlaySound("playerShoot");
+			SM::getInstance()->stopAndPlaySound("defaultGunShoot");
 
-			Bullet bullet(firePoint, bulletDamage, 4.0f);
+			Bullet bullet(firePoint, bulletDamage, bulletSpeed);
 			bullet.updateVelocityTo(targetPos);
 
 			OM::getInstance()->addBullet(bullet);

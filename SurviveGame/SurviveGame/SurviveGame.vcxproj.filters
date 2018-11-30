@@ -46,9 +46,6 @@
     <Filter Include="소스 파일\Codes\Utilities\EventHandler">
       <UniqueIdentifier>{9354bd71-c3f5-4b9b-a31b-f3c54d4be6ed}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\Codes\Managers\VectorManager">
-      <UniqueIdentifier>{21140c55-c69b-46e0-86f8-58dd6d80be05}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\Codes\GameVars">
       <UniqueIdentifier>{871993c2-78fb-4db8-bcbb-99f97e5a3d60}</UniqueIdentifier>
     </Filter>
@@ -66,6 +63,9 @@
     </Filter>
     <Filter Include="소스 파일\Codes\Objects\Monsters">
       <UniqueIdentifier>{56454f4b-cf3d-4d7d-be3b-274055a2fb5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Codes\Managers\ObjectManager">
+      <UniqueIdentifier>{21140c55-c69b-46e0-86f8-58dd6d80be05}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -145,9 +145,12 @@
       <Filter>소스 파일\Codes\Objects\Monsters</Filter>
     </ClInclude>
     <ClInclude Include="ObjectManager.h">
-      <Filter>소스 파일\Codes\Managers\VectorManager</Filter>
+      <Filter>소스 파일\Codes\Managers\ObjectManager</Filter>
     </ClInclude>
     <ClInclude Include="ShotGun.h">
+      <Filter>소스 파일\Codes\Objects\Guns</Filter>
+    </ClInclude>
+    <ClInclude Include="SmgGun.h">
       <Filter>소스 파일\Codes\Objects\Guns</Filter>
     </ClInclude>
   </ItemGroup>
@@ -180,7 +183,7 @@
       <Filter>소스 파일\Codes\Managers\ScoreManager</Filter>
     </ClCompile>
     <ClCompile Include="ObjectManager.cpp">
-      <Filter>소스 파일\Codes\Managers\VectorManager</Filter>
+      <Filter>소스 파일\Codes\Managers\ObjectManager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

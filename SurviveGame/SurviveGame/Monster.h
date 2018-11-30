@@ -94,7 +94,7 @@ namespace jm
 				translate(position);
 				rotate(rotation);
 				//==debug
-				drawWiredCircle(Colors::gray, recogRad);
+				//drawWiredCircle(Colors::gray, recogRad);
 				//=======
 				drawBody();
 			}

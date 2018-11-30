@@ -5,7 +5,8 @@
 
 namespace jm
 {
-	//issues
+	//singleton
+	//#issues
 	//1. vector 순환과정에서의 버그 있었음
 	//- 기존(버그남): auto iter = xxx.begin() 을 이용해 for돌림
 	//- 현재: 인덱스로 돌림

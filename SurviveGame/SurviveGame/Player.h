@@ -6,6 +6,7 @@
 #include "SoundManager.h"
 #include "Delay.h"
 #include "ObjectManager.h"
+#include "SmgGun.h"
 #include "ShotGun.h"
 #include "DefaultGun.h"
 
@@ -16,7 +17,11 @@ namespace jm
 	{
 		using SM = SoundManager;
 	private:
+		RGB bodyColor;
+
 		std::shared_ptr<Gun> eqGun;
+		bool eqableGun[3] = { true,false,false };
+		int nextUnlockGunNum = 2;
 
 		float speed;
 
@@ -25,9 +30,7 @@ namespace jm
 		Player(const vec2& position, const float& speed)
 			: GameObject(position, 0.05f), speed(speed)
 		{
-			std::shared_ptr<DefaultGun> startingGun = std::make_shared<DefaultGun>(position);
-			eqGun = std::static_pointer_cast<std::shared_ptr<Gun>::element_type>(startingGun);
-			chaneGun(); //디버그용
+			changeGun(1);
 		}
 		//getter, setter
 		float getSpeed() const
@@ -38,17 +41,59 @@ namespace jm
 		{
 			this->speed = speed;
 		}
+		void setColor(const RGB& color)
+		{
+			bodyColor = color;
+		}
+		int getNextUnlockGunNum()
+		{
+			return nextUnlockGunNum;
+		}
 
 		//methods
 		void update()
 		{
 			eqGun->asyncPos(position);
 		}
-		void chaneGun() //미완(디버그용)
+		void changeGun(int gunNum) //미완(디버그용)
 		{
-			eqGun.reset();
-			std::shared_ptr<ShotGun> useGun = std::make_shared<ShotGun>(position);
-			eqGun = std::static_pointer_cast<std::shared_ptr<Gun>::element_type>(useGun);
+			int gunIdx = gunNum - 1;
+			switch (gunNum)
+			{
+			case 1:
+				if (eqableGun[gunIdx])
+				{
+					eqGun.reset();
+					eqGun = std::static_pointer_cast<std::shared_ptr<Gun>::element_type>(std::make_shared<DefaultGun>(position));
+					setColor(Colors::blue);
+				}
+				break;
+			case 2:
+				if (eqableGun[gunIdx])
+				{
+					eqGun.reset();
+					eqGun = std::static_pointer_cast<std::shared_ptr<Gun>::element_type>(std::make_shared<ShotGun>(position));
+					setColor(Colors::hotpink);
+				}
+				break;
+			case 3:
+				if (eqableGun[gunIdx])
+				{
+					eqGun.reset();
+					eqGun = std::static_pointer_cast<std::shared_ptr<Gun>::element_type>(std::make_shared<SmgGun>(position));
+					setColor(Colors::gold);
+				}
+				break;
+			default:
+				break;
+			}
+		}
+		void enableGun()
+		{
+			if (nextUnlockGunNum > 3)
+				return;
+			eqableGun[nextUnlockGunNum-1] = true;
+			nextUnlockGunNum++;
 		}
 		void shoot(const vec2& targetPos) 
 		{
@@ -70,16 +115,16 @@ namespace jm
 			{
 				translate(position);
 				rotate(rotation);
-				//body
+				//베이스
 				beginTransformation();
 				{
-					drawFilledTriangle(Colors::blue, vec2(0.1f, 0.0f), vec2(-0.05f, 0.02f), vec2(-0.05f, -0.02f));
+					drawFilledCircle(Colors::black, bodyRadius);
 				}
 				endTransformation();
-				//충돌반경(디버그용)
+				//무기관련
 				beginTransformation();
 				{
-					drawWiredCircle(Colors::black, bodyRadius);
+					drawFilledTriangle(bodyColor, vec2(0.1f, 0.0f), vec2(-0.05f, 0.02f), vec2(-0.05f, -0.02f));
 				}
 				endTransformation();
 			}

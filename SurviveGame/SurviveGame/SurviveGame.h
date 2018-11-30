@@ -37,7 +37,9 @@ namespace jm
 			: Game2D("Survive Game", 960, 960, false)
 		{
 			SM::getInstance()->initSound("horror_bgm.wav", "bgm", true);
-			SM::getInstance()->initSound("single_shot.wav", "playerShoot", false);
+			SM::getInstance()->initSound("single_shot.wav", "defaultGunShoot", false);
+			SM::getInstance()->initSound("multi_shot.wav", "shotGunShoot", false);
+			SM::getInstance()->initSound("short_shot.wav", "smgGunShoot", false);
 			SM::getInstance()->initSound("zombie_hit.wav", "zombieHit", false);
 			SM::getInstance()->initSound("zombie_die.wav", "zombieDie", false);
 			SM::getInstance()->initSound("shine.wav", "itemGen", false);
@@ -52,14 +54,12 @@ namespace jm
 			{
 				inputManage();
 				spawnZombie();
-				updateStuffs();
 				giveItem();
 				OM::getInstance()->update();
 				gameoverManage();
 				spawnSpeedUp();
 				updateScore();
 				render();
-				//debug();
 			}
 			else
 			{
@@ -85,7 +85,7 @@ namespace jm
 		}
 		void updateScore()
 		{
-			ScoreManager::getInstance()->setScore(ScoreManager::getInstance()->getKill()*5+int(RUNTIME));
+			SCM::getInstance()->setScore(SCM::getInstance()->getKill()*5+int(RUNTIME));
 		}
 		void spawnSpeedUp()
 		{
@@ -109,7 +109,7 @@ namespace jm
 					SM::getInstance()->playSound("itemGen");
 				}
 				break;
-			case 45:
+			case 2:
 				if (!isItemGiven[1])
 				{
 					OM::getInstance()->addItem(Item(vec2(RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER), RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER))));
@@ -117,7 +117,7 @@ namespace jm
 					SM::getInstance()->playSound("itemGen");
 				}
 				break;
-			case 75:
+			case 3:
 				if (!isItemGiven[2])
 				{
 					OM::getInstance()->addItem(Item(vec2(RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER), RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER))));
@@ -125,7 +125,7 @@ namespace jm
 					SM::getInstance()->playSound("itemGen");
 				}
 				break;
-			case 110:
+			case 4:
 				if (!isItemGiven[3])
 				{
 					OM::getInstance()->addItem(Item(vec2(RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER), RD::getInstance()->randomFloat(-SCREENBORDER, SCREENBORDER))));
@@ -137,7 +137,7 @@ namespace jm
 		}
 		void inputManage()
 		{
-			//move
+			//이동
 			vec2 dir(0.0f, 0.0f);
 			if (isKeyPressed(GLFW_KEY_W))
 			{
@@ -174,11 +174,25 @@ namespace jm
 			}
 			player->move(dir.nomalized());
 
-			//getMousePos
+			//플레이어 무기교체
+			if (isKeyPressedAndReleased(GLFW_KEY_1))
+			{
+				player->changeGun(1);
+			}
+			if (isKeyPressedAndReleased(GLFW_KEY_2))
+			{
+				player->changeGun(2);
+			}
+			if (isKeyPressedAndReleased(GLFW_KEY_3))
+			{
+				player->changeGun(3);
+			}
+
+			//마우스 입력관련
 			vec2 mousePos = getCursorPos();
-			//mouseLookAt
+			//lookAt
 			player->lookAt(mousePos);
-			//shoot
+			//발사
 			if (isMouseButtonPressed(GLFW_MOUSE_BUTTON_LEFT))
 			{
 				player->shoot(mousePos);
@@ -214,18 +228,10 @@ namespace jm
 				OM::getInstance()->addZombie(Zombie(spawnPoint));
 			}
 		}
-		void updateStuffs()
-		{
-			OM::getInstance()->updateStuffs();
-		}
 		void render()
 		{
 			OM::getInstance()->render();
 			crossHair.render();
-		}
-		void debug()
-		{
-			std::cout << "curTime = " << RUNTIME << ", deltaTime = " << DELTATIME << std::endl;
 		}
 	};
 }

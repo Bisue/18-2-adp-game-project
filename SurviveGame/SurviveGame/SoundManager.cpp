@@ -2,6 +2,20 @@
 
 namespace jm
 {
+	SoundManager* SoundManager::getInstance()
+	{
+		if (instance == nullptr)
+		{
+			instance = new SoundManager();
+		}
+		return instance;
+	}
+
+	SoundManager::~SoundManager()
+	{
+		system->release();
+	}
+
 	SoundManager::SoundManager()
 	{
 		result = FMOD::System_Create(&system);

@@ -2,6 +2,15 @@
 
 namespace jm
 {
+	CollisionManager* CollisionManager::getInstance()
+	{
+		if (instance == nullptr)
+		{
+			instance = new CollisionManager();
+		}
+		return instance;
+	}
+
 	bool CollisionManager::circleToCircle(const vec2& pos1, const float& rad1, const vec2& pos2, const float& rad2)
 	{
 		vec2 diff = pos2 - pos1;
