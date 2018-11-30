@@ -67,6 +67,9 @@
     <Filter Include="소스 파일\Codes\Managers\ObjectManager">
       <UniqueIdentifier>{21140c55-c69b-46e0-86f8-58dd6d80be05}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Codes\ETCGraphics\Alphabet">
+      <UniqueIdentifier>{0186755b-3dfd-433f-b6e4-d3ed3fced329}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bullet.h">
@@ -153,6 +156,12 @@
     <ClInclude Include="SmgGun.h">
       <Filter>소스 파일\Codes\Objects\Guns</Filter>
     </ClInclude>
+    <ClInclude Include="Alphabet.h">
+      <Filter>소스 파일\Codes\ETCGraphics\Alphabet</Filter>
+    </ClInclude>
+    <ClInclude Include="Alphabets.h">
+      <Filter>소스 파일\Codes\ETCGraphics\Alphabet</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -184,6 +193,18 @@
     </ClCompile>
     <ClCompile Include="ObjectManager.cpp">
       <Filter>소스 파일\Codes\Managers\ObjectManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Delay.cpp">
+      <Filter>소스 파일\Codes\Utilities\Delay</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>소스 파일\Codes\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="Gun.cpp">
+      <Filter>소스 파일\Codes\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>소스 파일\Codes\Interfaces</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

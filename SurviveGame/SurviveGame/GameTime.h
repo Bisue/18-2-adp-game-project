@@ -22,14 +22,7 @@ namespace jm
 		{ }
 
 	public:
-		static GameTime* getInstance()
-		{
-			if (instance == nullptr)
-			{
-				instance = new GameTime();
-			}
-			return instance;
-		}
+		static GameTime* getInstance();
 
 		float getDeltaTime() const;
 		void setDeltaTime(float dt);

@@ -120,6 +120,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Alphabet.h" />
+    <ClInclude Include="Alphabets.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Constants.h" />
@@ -151,11 +153,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CollisionManager.cpp" />
+    <ClCompile Include="Delay.cpp" />
     <ClCompile Include="Engine\DrawFunctions.cpp" />
     <ClCompile Include="Engine\Game2D.cpp" />
     <ClCompile Include="Engine\Timer.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameTIme.cpp" />
+    <ClCompile Include="Gun.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Monster.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="Randomization.cpp" />
     <ClCompile Include="ScoreManager.cpp" />

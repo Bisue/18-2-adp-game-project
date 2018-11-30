@@ -3,6 +3,15 @@
 
 namespace jm
 { 
+	GameTime* GameTime::getInstance()
+	{
+		if (instance == nullptr)
+		{
+			instance = new GameTime();
+		}
+		return instance;
+	}
+
 	float GameTime::getDeltaTime() const
 	{
 		return deltaTime;

@@ -15,42 +15,16 @@ namespace jm
 		float bulletDamage;
 		float bulletSpeed;
 		
-		//int maxBullets; //탄창 최대치
-		//int curBullets; //탄창 잔량
-		//Delay reloadDelay; //장전 딜레이
-
 	public:
 		//생성자
-		Gun(const vec2& playerPos, const Delay& fireDelay, const float& bulletDamage, const float& bulletSpeed)
-			: firePoint(playerPos), fireDelay(fireDelay), bulletDamage(bulletDamage), bulletSpeed(bulletSpeed)
-		{ }
+		Gun(const vec2& playerPos, const Delay& fireDelay, const float& bulletDamage, const float& bulletSpeed);
 
-		vec2 getFirePoint() const
-		{
-			return firePoint;
-		}
-		void setFirePoint(const vec2& newPoint)
-		{
-			firePoint = newPoint;
-		}
+		vec2 getFirePoint() const;
+		void setFirePoint(const vec2& newPoint);
 		
-		void asyncPos(const vec2& playerPos)
-		{
-			firePoint = playerPos;
-		}
+		void asyncPos(const vec2& playerPos);
 		
-		void shoot(const vec2& targetPos)
-		{
-			if (fireDelay.check())
-			{
-				fire(targetPos);
-			}
-		}
-
-		//void reload() //장전
-		//{
-		//	...
-		//}
+		void shoot(const vec2& targetPos);
 
 		//순수가상함수
 		virtual void fire(const vec2& targetPos) = 0; //총알 발사

@@ -2,6 +2,17 @@
 
 namespace jm
 {
+	Randomization* Randomization::getInstance()
+	{
+		if (instance == nullptr)
+		{
+			instance = new Randomization();
+			std::random_device rd;
+			instance->mer = std::mt19937(rd());
+		}
+		return instance;
+	}
+
 	float Randomization::randomFloat(float min, float max) 
 	{
 		std::uniform_real_distribution<float> dist(min, max);
