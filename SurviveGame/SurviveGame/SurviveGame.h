@@ -76,53 +76,53 @@ namespace jm
 			std::vector<std::reference_wrapper<Alphabet>> enter;
 
 			//youdied
-			AlphaY y(vec2(-fontSize, fontSize), Colors::red, fontSize);
-			youdied.push_back(y);
-			AlphaO o(vec2(0, fontSize), Colors::red, fontSize);
-			youdied.push_back(o);
-			AlphaU u(vec2(fontSize, fontSize), Colors::red, fontSize);
-			youdied.push_back(u);
-			AlphaD d1(vec2(-1.5f*fontSize, 0), Colors::red, fontSize);
-			youdied.push_back(d1);
-			AlphaI i(vec2(-0.5f*fontSize, 0), Colors::red, fontSize);
-			youdied.push_back(i);
-			AlphaE e(vec2(0.5f*fontSize, 0), Colors::red, fontSize);
-			youdied.push_back(e);
-			AlphaD d2(vec2(1.5f*fontSize, 0), Colors::red, fontSize);
-			youdied.push_back(d2);
+			AlphaY a1(vec2(-fontSize, fontSize), Colors::red, fontSize);
+			youdied.push_back(a1);
+			AlphaO a2(vec2(0, fontSize), Colors::red, fontSize);
+			youdied.push_back(a2);
+			AlphaU a3(vec2(fontSize, fontSize), Colors::red, fontSize);
+			youdied.push_back(a3);
+			AlphaD a4(vec2(-1.5f*fontSize, 0), Colors::red, fontSize);
+			youdied.push_back(a4);
+			AlphaI a5(vec2(-0.5f*fontSize, 0), Colors::red, fontSize);
+			youdied.push_back(a5);
+			AlphaE a6(vec2(0.5f*fontSize, 0), Colors::red, fontSize);
+			youdied.push_back(a6);
+			AlphaD a7(vec2(1.5f*fontSize, 0), Colors::red, fontSize);
+			youdied.push_back(a7);
 
-			//enter esc to exit
-			AlphaE e1(vec2(-4*fontSize1, -2 * fontSize1), Colors::black, fontSize1);
-			enter.push_back(e1);
-			AlphaN n(vec2(-3*fontSize1, -2 * fontSize1), Colors::black, fontSize1);
-			enter.push_back(n);
-			AlphaT t(vec2(-2*fontSize1, -2 * fontSize1), Colors::black, fontSize1);
-			enter.push_back(t);
-			AlphaE e2(vec2(-fontSize1, -2 * fontSize1), Colors::black, fontSize1);
-			enter.push_back(e2);
-			AlphaR r(vec2(0, -2 * fontSize1), Colors::black, fontSize1);
-			enter.push_back(r);
+			//press esc to exit
+			AlphaP b1(vec2(-4*fontSize1, -2 * fontSize1), Colors::black, fontSize1);
+			enter.push_back(b1);
+			AlphaR b2(vec2(-3*fontSize1, -2 * fontSize1), Colors::black, fontSize1);
+			enter.push_back(b2);
+			AlphaE b3(vec2(-2*fontSize1, -2 * fontSize1), Colors::black, fontSize1);
+			enter.push_back(b3);
+			AlphaS b4(vec2(-fontSize1, -2 * fontSize1), Colors::black, fontSize1);
+			enter.push_back(b4);
+			AlphaS b5(vec2(0, -2 * fontSize1), Colors::black, fontSize1);
+			enter.push_back(b5);
 
-			AlphaE e3(vec2(2* fontSize1, -2 * fontSize1), Colors::red, fontSize1);
-			enter.push_back(e3);
-			AlphaS s(vec2(3* fontSize1, -2 * fontSize1), Colors::red, fontSize1);
-			enter.push_back(s);
-			AlphaC c(vec2(4* fontSize1, -2 * fontSize1), Colors::red, fontSize1);
-			enter.push_back(c);
+			AlphaE b6(vec2(2* fontSize1, -2 * fontSize1), Colors::blue, fontSize1);
+			enter.push_back(b6);
+			AlphaS b7(vec2(3* fontSize1, -2 * fontSize1), Colors::blue, fontSize1);
+			enter.push_back(b7);
+			AlphaC b8(vec2(4* fontSize1, -2 * fontSize1), Colors::blue, fontSize1);
+			enter.push_back(b8);
 
-			AlphaT t1(vec2(-3*fontSize1, -3 * fontSize1), Colors::red, fontSize1);
-			enter.push_back(t1);
-			AlphaO o1(vec2(-2*fontSize1, -3 * fontSize1), Colors::red, fontSize1);
-			enter.push_back(o1);
+			AlphaT b9(vec2(-3*fontSize1, -3 * fontSize1), Colors::black, fontSize1);
+			enter.push_back(b9);
+			AlphaO b10(vec2(-2*fontSize1, -3 * fontSize1), Colors::black, fontSize1);
+			enter.push_back(b10);
 
-			AlphaE e4(vec2(0, -3 * fontSize1), Colors::red, fontSize1);
-			enter.push_back(e4);
-			AlphaX x(vec2(1.5f*fontSize1, -3 * fontSize1), Colors::red, fontSize1);
-			enter.push_back(x);
-			AlphaI i1(vec2(1.5f*fontSize1, -3 * fontSize1), Colors::red, fontSize1);
-			enter.push_back(i1);
-			AlphaT t2(vec2(1.5f*fontSize1, -3 * fontSize1), Colors::red, fontSize1);
-			enter.push_back(t2);
+			AlphaE b11(vec2(0, -3 * fontSize1), Colors::black, fontSize1);
+			enter.push_back(b11);
+			AlphaX b12(vec2(fontSize1, -3 * fontSize1), Colors::black, fontSize1);
+			enter.push_back(b12);
+			AlphaI b13(vec2(2*fontSize1, -3 * fontSize1), Colors::black, fontSize1);
+			enter.push_back(b13);
+			AlphaT b14(vec2(3*fontSize1, -3 * fontSize1), Colors::black, fontSize1);
+			enter.push_back(b14);
 
 
 			for (auto alpha : youdied)
