@@ -70,15 +70,69 @@ namespace jm
 		
 		void gameoverScreen()
 		{
-			AlphaA a(vec2(-0.5f, 0), Colors::black, 0.25f);
-			AlphaB b(vec2(-0.25f, 0), Colors::black, 0.25f);
-			AlphaC c(vec2(0.25f, 0), Colors::black, 0.25f);
-			AlphaD d(vec2(0.5f, 0), Colors::black, 0.25f);
-			a.render();
-			b.render();
-			c.render();
-			d.render();
+			float fontSize = 0.2f;
+			float fontSize1 = 0.1f;
+			std::vector<std::reference_wrapper<Alphabet>> youdied;
+			std::vector<std::reference_wrapper<Alphabet>> enter;
 
+			//youdied
+			AlphaY y(vec2(-fontSize, fontSize), Colors::red, fontSize);
+			youdied.push_back(y);
+			AlphaO o(vec2(0, fontSize), Colors::red, fontSize);
+			youdied.push_back(o);
+			AlphaU u(vec2(fontSize, fontSize), Colors::red, fontSize);
+			youdied.push_back(u);
+			AlphaD d1(vec2(-1.5f*fontSize, 0), Colors::red, fontSize);
+			youdied.push_back(d1);
+			AlphaI i(vec2(-0.5f*fontSize, 0), Colors::red, fontSize);
+			youdied.push_back(i);
+			AlphaE e(vec2(0.5f*fontSize, 0), Colors::red, fontSize);
+			youdied.push_back(e);
+			AlphaD d2(vec2(1.5f*fontSize, 0), Colors::red, fontSize);
+			youdied.push_back(d2);
+
+			//enter esc to exit
+			AlphaE e1(vec2(-4*fontSize1, -2 * fontSize1), Colors::black, fontSize1);
+			enter.push_back(e1);
+			AlphaN n(vec2(-3*fontSize1, -2 * fontSize1), Colors::black, fontSize1);
+			enter.push_back(n);
+			AlphaT t(vec2(-2*fontSize1, -2 * fontSize1), Colors::black, fontSize1);
+			enter.push_back(t);
+			AlphaE e2(vec2(-fontSize1, -2 * fontSize1), Colors::black, fontSize1);
+			enter.push_back(e2);
+			AlphaR r(vec2(0, -2 * fontSize1), Colors::black, fontSize1);
+			enter.push_back(r);
+
+			AlphaE e3(vec2(2* fontSize1, -2 * fontSize1), Colors::red, fontSize1);
+			enter.push_back(e3);
+			AlphaS s(vec2(3* fontSize1, -2 * fontSize1), Colors::red, fontSize1);
+			enter.push_back(s);
+			AlphaC c(vec2(4* fontSize1, -2 * fontSize1), Colors::red, fontSize1);
+			enter.push_back(c);
+
+			AlphaT t1(vec2(-3*fontSize1, -3 * fontSize1), Colors::red, fontSize1);
+			enter.push_back(t1);
+			AlphaO o1(vec2(-2*fontSize1, -3 * fontSize1), Colors::red, fontSize1);
+			enter.push_back(o1);
+
+			AlphaE e4(vec2(0, -3 * fontSize1), Colors::red, fontSize1);
+			enter.push_back(e4);
+			AlphaX x(vec2(1.5f*fontSize1, -3 * fontSize1), Colors::red, fontSize1);
+			enter.push_back(x);
+			AlphaI i1(vec2(1.5f*fontSize1, -3 * fontSize1), Colors::red, fontSize1);
+			enter.push_back(i1);
+			AlphaT t2(vec2(1.5f*fontSize1, -3 * fontSize1), Colors::red, fontSize1);
+			enter.push_back(t2);
+
+
+			for (auto alpha : youdied)
+			{
+				alpha.get().render();
+			}
+			for (auto alpha : enter)
+			{
+				alpha.get().render();
+			}
 		}
 		void gameoverManage()
 		{
