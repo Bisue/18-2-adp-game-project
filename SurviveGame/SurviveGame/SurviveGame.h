@@ -32,12 +32,12 @@ namespace jm
 
 		bool gameover = false;
 
-		Delay zombieSpawnDelay = Delay(1.5f);
-		Delay zombieSpawnSpeedUpDelay = Delay(2.0f);
-		Delay runnerSpawnDelay = Delay(3.5f);
-		Delay runnerSpawnSpeedUpDelay = Delay(4.0f);
-		Delay tankerSpawnDelay = Delay(15.0f);
-		Delay tankerSpawnSpeedUpDelay = Delay(20.0f);
+		Delay zombieSpawnDelay = Delay(1.5f);          //default = 1.5f;
+		Delay zombieSpawnSpeedUpDelay = Delay(2.0f);   //default = 2.0f;
+		Delay runnerSpawnDelay = Delay(3.5f);          //default = 3.5f;
+		Delay runnerSpawnSpeedUpDelay = Delay(4.0f);   //default = 4.0f;
+		Delay tankerSpawnDelay = Delay(15.0f);         //default = 15.0f;
+		Delay tankerSpawnSpeedUpDelay = Delay(20.0f);  //default = 20.0f;
 
 	public:
 		SurviveGame()
