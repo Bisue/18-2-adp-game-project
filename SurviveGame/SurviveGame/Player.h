@@ -17,7 +17,7 @@ namespace jm
 	{
 		using SM = SoundManager;
 	private:
-		RGB bodyColor;
+		RGB gunColor;
 
 		std::shared_ptr<Gun> eqGun;
 		bool eqableGun[3] = { true,false,false };
@@ -43,7 +43,7 @@ namespace jm
 		}
 		void setColor(const RGB& color)
 		{
-			bodyColor = color;
+			gunColor = color;
 		}
 		int getNextUnlockGunNum()
 		{
@@ -55,7 +55,7 @@ namespace jm
 		{
 			eqGun->asyncPos(position);
 		}
-		void changeGun(int gunNum) //미완(디버그용)
+		void changeGun(int gunNum)
 		{
 			int gunIdx = gunNum - 1;
 			switch (gunNum)
@@ -124,7 +124,7 @@ namespace jm
 				//무기관련
 				beginTransformation();
 				{
-					drawFilledTriangle(bodyColor, vec2(0.1f, 0.0f), vec2(-0.05f, 0.02f), vec2(-0.05f, -0.02f));
+					drawFilledTriangle(gunColor, vec2(0.1f, 0.0f), vec2(-0.05f, 0.02f), vec2(-0.05f, -0.02f));
 				}
 				endTransformation();
 			}

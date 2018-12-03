@@ -1,7 +1,5 @@
 #pragma once
-#include "Game2D.h"
 #include "Player.h"
-#include "Bullet.h"
 #include "Zombie.h"
 #include "Runner.h"
 #include "Tanker.h"
@@ -21,8 +19,6 @@
 
 namespace jm
 {
-	//TODO: 벡터(Bullets, Monsters, Items)를 각각 감싸고 있는 Wrapper클래스 구현
-	//
 	class SurviveGame : public Game2D
 	{
 	private:

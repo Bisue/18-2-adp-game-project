@@ -62,7 +62,7 @@ namespace jm
 	}
 	void ObjectManager::updateBullets()
 	{
-		for (int i = bullets.size()-1; i >= 0; i--)
+		for (int i = static_cast<int>(bullets.size())-1; i >= 0; i--)
 		{
 			auto& bullet = bullets[i];
 			if (!((bullet->getPos().x >= -SCREENBORDER && bullet->getPos().x <= SCREENBORDER) && (bullet->getPos().y >= -SCREENBORDER && bullet->getPos().y <= SCREENBORDER)))
@@ -73,11 +73,11 @@ namespace jm
 	}
 	void ObjectManager::updateMonsters()
 	{
-		for (int iM = monsters.size()-1; iM >= 0; iM--)
+		for (int iM = static_cast<int>(monsters.size())-1; iM >= 0; iM--)
 		{
 			auto& monster = monsters[iM];
 			monster->moveTo(player->getPos());
-			for (int iB = bullets.size()-1; iB >= 0; iB--)
+			for (int iB = static_cast<int>(bullets.size())-1; iB >= 0; iB--)
 			{
 				auto& bullet = bullets[iB];
 				if (CM::getInstance()->checkCircleCollision(monster.get(), bullet.get()))
@@ -101,7 +101,7 @@ namespace jm
 	}
 	void ObjectManager::updateItems()
 	{
-		for (int i = items.size()-1; i >= 0; i--)
+		for (int i = static_cast<int>(items.size())-1; i >= 0; i--)
 		{
 			auto& item = items[i];
 			if (CM::getInstance()->checkCircleCollision(player.get(), item.get()))
@@ -115,12 +115,12 @@ namespace jm
 	void ObjectManager::updateStuffs()
 	{
 		player->update();
-		for (int i = bullets.size()-1; i >= 0; i--)
+		for (int i = static_cast<int>(bullets.size())-1; i >= 0; i--)
 		{
 			auto& bullet = bullets[i];
 			bullet->update();
 		}
-		for (int i = items.size() - 1; i >= 0; i--)
+		for (int i = static_cast<int>(items.size()) - 1; i >= 0; i--)
 		{
 			auto& item = items[i];
 			item->update();
@@ -129,7 +129,7 @@ namespace jm
 
 	bool ObjectManager::gameoverManager()
 	{
-		for (int i = monsters.size()-1; i >= 0; i--)
+		for (int i = static_cast<int>(monsters.size())-1; i >= 0; i--)
 		{
 			auto& monster = monsters[i];
 			if (CM::getInstance()->checkCircleCollision(player.get(), monster.get()))
@@ -151,17 +151,17 @@ namespace jm
 	void ObjectManager::render()
 	{
 		player->render();
-		for (int i = items.size()-1; i >=0; i--)
+		for (int i = static_cast<int>(items.size())-1; i >=0; i--)
 		{
 			auto& item = items[i];
 			item->render();
 		}
-		for (int i = bullets.size()-1; i >= 0 ; i--)
+		for (int i = static_cast<int>(bullets.size())-1; i >= 0 ; i--)
 		{
 			auto& bullet = bullets[i];
 			bullet->render();
 		}
-		for (int i = monsters.size()-1; i >= 0 ; i--)
+		for (int i = static_cast<int>(monsters.size())-1; i >= 0 ; i--)
 		{
 			auto& monster = monsters[i];
 			monster->render();
