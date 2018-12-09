@@ -19,7 +19,21 @@ namespace jm
 		{
 			beginTransformation();
 			{
-				drawFilledCircle(Colors::deepdarkcrystal, bodyRadius);
+				//drawFilledCircle(Colors::deepdarkcrystal, bodyRadius);
+				//translate(bodyRadius*0.35f, 0);
+				//beginTransformation();
+				//{
+				//	translate(0, bodyRadius);
+				//	drawFilledCircle(Colors::darkcrystal, bodyRadius*0.35f);
+				//}
+				//endTransformation();
+				//beginTransformation();
+				//{
+				//	translate(0, -bodyRadius);
+				//	drawFilledCircle(Colors::darkcrystal, bodyRadius*0.35f);
+				//}
+				//endTransformation();
+
 				translate(bodyRadius*0.35f, 0);
 				beginTransformation();
 				{
@@ -33,6 +47,8 @@ namespace jm
 					drawFilledCircle(Colors::darkcrystal, bodyRadius*0.35f);
 				}
 				endTransformation();
+				translate(-bodyRadius*0.35f, 0);
+				drawFilledCircle(Colors::deepdarkcrystal, bodyRadius);
 			}
 			endTransformation();
 		}
