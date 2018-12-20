@@ -90,7 +90,7 @@ namespace jm
 				{
 					SM::getInstance()->stopAndPlaySound("zombieHit");
 
-					addCircleEffect(CircleEffect(bullet->getPos(), 0.2f, bullet->getColor()));
+					addCircleEffect(CircleEffect(bullet->getPos(), 0.1f, bullet->getColor()));
 					float damage = bullet->getDamage();
 					bullets.erase(bullets.begin() + iB);
 					monster->hit(damage);
