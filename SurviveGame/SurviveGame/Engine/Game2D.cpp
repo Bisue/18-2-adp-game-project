@@ -233,7 +233,7 @@ namespace jm
 			//timer.start();
 			// pre draw
 			glfwMakeContextCurrent(glfw_window);
-			float bgColor = 38.0f / 255.0f;
+			float bgColor = 45.0f / 255.0f;
 			glClearColor(bgColor, bgColor, bgColor, 1);			 // 어두운 배경 설정
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 			glMatrixMode(GL_MODELVIEW);

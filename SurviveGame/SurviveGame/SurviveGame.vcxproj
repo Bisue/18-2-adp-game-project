@@ -133,6 +133,7 @@
   <ItemGroup>
     <ClInclude Include="Alphabet.h" />
     <ClInclude Include="Alphabets.h" />
+    <ClInclude Include="CircleEffect.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Constants.h" />

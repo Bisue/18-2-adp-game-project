@@ -52,5 +52,9 @@ namespace jm
 			}
 			endTransformation();
 		}
+		RGB getColor() const override
+		{
+			return Colors::deepdarkred;
+		}
 	};
 }

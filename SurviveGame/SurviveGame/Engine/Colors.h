@@ -21,13 +21,18 @@ namespace jm
 		const RGB pink(255, 192, 203);
 		const RGB hotpink(255, 105, 180);
 
-		const RGB darkgreen(0, 45, 0);
-		const RGB deepdartgreen(0, 20, 0);
+		const RGB darkgreen(0, 130, 0);
+		const RGB deepdartgreen(0, 90, 0);
 		
-		const RGB darkred(110, 0, 0);
-		const RGB deepdarkred(80, 0, 0);
+		const RGB darkred(130, 0, 0);
+		const RGB deepdarkred(90, 0, 0);
 
-		const RGB darkcrystal(24, 68, 76);
-		const RGB deepdarkcrystal(10, 54, 59);
+		const RGB darkcrystal(30, 80, 95);
+		const RGB deepdarkcrystal(18, 65, 77);
+
+		const RGB playerBody(64, 64, 64);
+		const RGB defaultGun(255, 192, 100);
+		const RGB shotGun(115, 192, 100);
+		const RGB smgGun(115, 192, 191);
 	}
 }

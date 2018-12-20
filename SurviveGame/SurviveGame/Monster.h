@@ -37,5 +37,6 @@ namespace jm
 		void drawHp() const;
 		//pure virtual methods
 		virtual void drawBody() const = 0;
+		virtual RGB getColor() const = 0;
 	};
 }

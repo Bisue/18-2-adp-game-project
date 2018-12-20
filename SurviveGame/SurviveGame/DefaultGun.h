@@ -16,7 +16,7 @@ namespace jm
 		{
 			SM::getInstance()->stopAndPlaySound("defaultGunShoot");
 
-			Bullet bullet(firePoint, bulletDamage, bulletSpeed);
+			Bullet bullet(firePoint, bulletDamage, bulletSpeed, Colors::defaultGun);
 			bullet.updateVelocityTo(targetPos);
 
 			OM::getInstance()->addBullet(bullet);

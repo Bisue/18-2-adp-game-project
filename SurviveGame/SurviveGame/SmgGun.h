@@ -8,7 +8,7 @@ namespace jm
 	{
 	public:
 		SmgGun(const vec2& playerPos)
-			: Gun(playerPos, Delay(0.05f), 15.0f, 3.0f)
+			: Gun(playerPos, Delay(0.05f), 15.0f, 4.0f)
 		{
 
 		}
@@ -17,7 +17,7 @@ namespace jm
 		{
 			SM::getInstance()->stopAndPlaySound("smgGunShoot");
 
-			Bullet bullet(firePoint, bulletDamage, bulletSpeed);
+			Bullet bullet(firePoint, bulletDamage, bulletSpeed, Colors::smgGun);
 
 			//·£´ýÈ­
 			vec2 fpToTp = targetPos - firePoint;

@@ -5,6 +5,7 @@
 #include "Runner.h"
 #include "Tanker.h"
 #include "Item.h"
+#include "CircleEffect.h"
 #include "CollisionManager.h"
 #include "SoundManager.h"
 #include "ScoreManager.h"
@@ -52,6 +53,10 @@ namespace jm
 		std::shared_ptr<Tanker> temp = std::make_shared<Tanker>(tanker);
 		monsters.push_back(std::static_pointer_cast<std::shared_ptr<Monster>::element_type>(temp));
 	}
+	void ObjectManager::addCircleEffect(const CircleEffect& circleEffect)
+	{
+		circleEffects.push_back(std::make_shared<CircleEffect>(circleEffect));
+	}
 
 	void ObjectManager::update()
 	{
@@ -59,10 +64,11 @@ namespace jm
 		updateBullets();
 		updateMonsters();
 		updateItems();
+		updateCircleEffect();
 	}
 	void ObjectManager::updateBullets()
 	{
-		for (int i = static_cast<int>(bullets.size())-1; i >= 0; i--)
+		for (int i = static_cast<int>(bullets.size()) - 1; i >= 0; i--)
 		{
 			auto& bullet = bullets[i];
 			if (!((bullet->getPos().x >= -SCREENBORDER && bullet->getPos().x <= SCREENBORDER) && (bullet->getPos().y >= -SCREENBORDER && bullet->getPos().y <= SCREENBORDER)))
@@ -73,24 +79,26 @@ namespace jm
 	}
 	void ObjectManager::updateMonsters()
 	{
-		for (int iM = static_cast<int>(monsters.size())-1; iM >= 0; iM--)
+		for (int iM = static_cast<int>(monsters.size()) - 1; iM >= 0; iM--)
 		{
 			auto& monster = monsters[iM];
 			monster->moveTo(player->getPos());
-			for (int iB = static_cast<int>(bullets.size())-1; iB >= 0; iB--)
+			for (int iB = static_cast<int>(bullets.size()) - 1; iB >= 0; iB--)
 			{
 				auto& bullet = bullets[iB];
 				if (CM::getInstance()->checkCircleCollision(monster.get(), bullet.get()))
 				{
 					SM::getInstance()->stopAndPlaySound("zombieHit");
 
+					addCircleEffect(CircleEffect(bullet->getPos(), 0.2f, bullet->getColor()));
 					float damage = bullet->getDamage();
-					bullets.erase(bullets.begin()+iB);
+					bullets.erase(bullets.begin() + iB);
 					monster->hit(damage);
 					if (monster->checkDie())
 					{
 						SM::getInstance()->stopAndPlaySound("zombieDie");
 
+						addCircleEffect(CircleEffect(monster->getPos(), monster->getBodyRadius(), Colors::red));
 						monsters.erase(monsters.begin() + iM);
 						ScoreManager::getInstance()->addKill(1);
 						break;
@@ -101,21 +109,32 @@ namespace jm
 	}
 	void ObjectManager::updateItems()
 	{
-		for (int i = static_cast<int>(items.size())-1; i >= 0; i--)
+		for (int i = static_cast<int>(items.size()) - 1; i >= 0; i--)
 		{
 			auto& item = items[i];
 			if (CM::getInstance()->checkCircleCollision(player.get(), item.get()))
 			{
 				items.erase(items.begin() + i);
 				player->enableGun();
-				player->changeGun(player->getNextUnlockGunNum()-1);
+				player->changeGun(player->getNextUnlockGunNum() - 1);
+			}
+		}
+	}
+	void ObjectManager::updateCircleEffect()
+	{
+		for (int i = static_cast<int>(circleEffects.size()) - 1; i >= 0; i--)
+		{
+			auto& effect = circleEffects[i];
+			if (effect->checkLife())
+			{
+				circleEffects.erase(circleEffects.begin() + i);
 			}
 		}
 	}
 	void ObjectManager::updateStuffs()
 	{
 		player->update();
-		for (int i = static_cast<int>(bullets.size())-1; i >= 0; i--)
+		for (int i = static_cast<int>(bullets.size()) - 1; i >= 0; i--)
 		{
 			auto& bullet = bullets[i];
 			bullet->update();
@@ -125,11 +144,16 @@ namespace jm
 			auto& item = items[i];
 			item->update();
 		}
+		for (int i = static_cast<int>(circleEffects.size()) - 1; i >= 0; i--)
+		{
+			auto& effect = circleEffects[i];
+			effect->update();
+		}
 	}
 
 	bool ObjectManager::gameoverManager()
 	{
-		for (int i = static_cast<int>(monsters.size())-1; i >= 0; i--)
+		for (int i = static_cast<int>(monsters.size()) - 1; i >= 0; i--)
 		{
 			auto& monster = monsters[i];
 			if (CM::getInstance()->checkCircleCollision(player.get(), monster.get()))
@@ -151,20 +175,25 @@ namespace jm
 	void ObjectManager::render()
 	{
 		player->render();
-		for (int i = static_cast<int>(items.size())-1; i >=0; i--)
+		for (int i = static_cast<int>(items.size()) - 1; i >= 0; i--)
 		{
 			auto& item = items[i];
 			item->render();
 		}
-		for (int i = static_cast<int>(bullets.size())-1; i >= 0 ; i--)
+		for (int i = static_cast<int>(bullets.size()) - 1; i >= 0; i--)
 		{
 			auto& bullet = bullets[i];
 			bullet->render();
 		}
-		for (int i = static_cast<int>(monsters.size())-1; i >= 0 ; i--)
+		for (int i = static_cast<int>(monsters.size()) - 1; i >= 0; i--)
 		{
 			auto& monster = monsters[i];
 			monster->render();
+		}
+		for (int i = static_cast<int>(circleEffects.size()) - 1; i >= 0; i--)
+		{
+			auto& effect = circleEffects[i];
+			effect->render();
 		}
 	}
 

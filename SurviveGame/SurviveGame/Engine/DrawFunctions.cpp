@@ -208,7 +208,7 @@ namespace jm
 	{
 		drawWiredRegularConvexPolygon(color, radius, 0.0f, 30);
 	}
-
+	
 	void drawWiredPentagon(const RGB & color, const float & radius)
 	{
 		drawWiredRegularConvexPolygon(color, radius, 90.0f, 5);

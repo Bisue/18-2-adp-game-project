@@ -70,6 +70,9 @@
     <Filter Include="소스 파일\Codes\ETCGraphics\Alphabet">
       <UniqueIdentifier>{0186755b-3dfd-433f-b6e4-d3ed3fced329}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Codes\Objects\Particles">
+      <UniqueIdentifier>{528b7cdf-b136-4997-852e-19f07aea1e62}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bullet.h">
@@ -167,6 +170,9 @@
     </ClInclude>
     <ClInclude Include="Tanker.h">
       <Filter>소스 파일\Codes\Objects\Monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="CircleEffect.h">
+      <Filter>소스 파일\Codes\Objects\Particles</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -65,7 +65,7 @@ namespace jm
 				{
 					eqGun.reset();
 					eqGun = std::static_pointer_cast<std::shared_ptr<Gun>::element_type>(std::make_shared<DefaultGun>(position));
-					setColor(Colors::blue);
+					setColor(Colors::defaultGun);
 				}
 				break;
 			case 2:
@@ -73,7 +73,7 @@ namespace jm
 				{
 					eqGun.reset();
 					eqGun = std::static_pointer_cast<std::shared_ptr<Gun>::element_type>(std::make_shared<ShotGun>(position));
-					setColor(Colors::hotpink);
+					setColor(Colors::shotGun);
 				}
 				break;
 			case 3:
@@ -81,7 +81,7 @@ namespace jm
 				{
 					eqGun.reset();
 					eqGun = std::static_pointer_cast<std::shared_ptr<Gun>::element_type>(std::make_shared<SmgGun>(position));
-					setColor(Colors::gold);
+					setColor(Colors::smgGun);
 				}
 				break;
 			default:
@@ -118,7 +118,7 @@ namespace jm
 				//베이스
 				beginTransformation();
 				{
-					drawFilledCircle(Colors::black, bodyRadius);
+					drawFilledCircle(Colors::playerBody, bodyRadius);
 				}
 				endTransformation();
 				//무기관련

@@ -20,6 +20,7 @@ namespace jm
 	class Runner;
 	class Tanker;
 	class Item;
+	class CircleEffect;
 
 	class ObjectManager
 	{
@@ -30,6 +31,7 @@ namespace jm
 		std::vector<std::shared_ptr<Bullet>> bullets;
 		std::vector<std::shared_ptr<Monster>> monsters;
 		std::vector<std::shared_ptr<Item>> items;
+		std::vector<std::shared_ptr<CircleEffect>> circleEffects;
 
 		//constructor (for init player)
 		ObjectManager(const vec2& playerStartPoint, const float& playerSpeed);
@@ -44,11 +46,13 @@ namespace jm
 		void addZombie(const Zombie& zombie);
 		void addRunner(const Runner& runner);
 		void addTanker(const Tanker& tanker);
+		void addCircleEffect(const CircleEffect& circleEffect);
 		//update
 		void update();
 		void updateBullets();
 		void updateMonsters();
 		void updateItems();
+		void updateCircleEffect();
 		void updateStuffs();
 		//manage
 		bool gameoverManager();

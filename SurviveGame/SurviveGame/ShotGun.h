@@ -8,7 +8,7 @@ namespace jm
 	{
 	public:
 		ShotGun(const vec2& playerPos)
-			: Gun(playerPos, Delay(0.8f), 50.0f, 3.0f)
+			: Gun(playerPos, Delay(0.8f), 50.0f, 4.0f)
 		{
 
 		}
@@ -20,7 +20,7 @@ namespace jm
 			Bullet bullets[5];
 			for (int i = 0; i < 5; i++)
 			{
-				bullets[i] = Bullet(firePoint, bulletDamage, bulletSpeed);
+				bullets[i] = Bullet(firePoint, bulletDamage, bulletSpeed, Colors::shotGun);
 
 				//산탄도계산 -> 각 총알의 targetPos 갱신
 				vec2 fpToTp = targetPos - firePoint;

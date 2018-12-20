@@ -16,12 +16,16 @@ namespace jm
 		Bullet() //for array
 			: GameObject(vec2(0,0), 0.0f)
 		{ } 
-		Bullet(const vec2& position, const float& damage, const float speed = 5.0f, const RGB& color = Colors::red)
+		Bullet(const vec2& position, const float& damage, const float speed = 5.0f, const RGB& color = Colors::yellow)
 			: GameObject(position, 0.01f), damage(damage), dir(vec2(0,0)), speed(speed), color(color)
 		{ }
 		float getDamage() const
 		{
 			return damage;
+		}
+		RGB getColor() const
+		{
+			return color;
 		}
 
 		void updateVelocityTo(const vec2& targetPos)
